@@ -20,6 +20,8 @@ nav:
     url: /archives.html
   - text: 分类目录 
     url: /categories.html
+  - text: 联系我
+    url: /contact.html
   - text: 友情链接
     url: /links.html
 
