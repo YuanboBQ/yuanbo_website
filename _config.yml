@@ -39,8 +39,6 @@ follow:
     url: /atom.xml
   - class: icon-weibo
     url: http://weibo.com/yuanbopsy
-  - class: icon-renren
-    url: http://renren.com
   - class: icon-github-alt
     url: http://github.com/pizn
   - class: icon-twitter
@@ -50,8 +48,8 @@ follow:
 #Links
 customLinks:
   - item:
-    - text: YUANBO
-      url: http://yuanbobq.github.io/
+    - text: 阳志平
+      url: http://www.yangzhiping.com/
     - text: Jekyll
       url: http://jekyllrb.com
     - text: Jekyll Theme
