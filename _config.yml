@@ -73,9 +73,9 @@ googleAnaly:
 
 #comment config
 disqus:
-  config: false
-  id: piznblog
+  config: true
+  id: yuanbo
 
 duoshuo:
-  config: true
+  config: false
   id: yuanbo
