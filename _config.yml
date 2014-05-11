@@ -28,10 +28,10 @@ author:
     name: YuanBo
     email: yuanbopsy@gmail.com
     imageLink: http://i.imgur.com/I591GcA.png
-    simpleIntro: 我是「YUANBO」，一个心理学和计算机科学的爱好者。
+    simpleIntro: 我是「YUANBO」，一个心理学和计算机编程的爱好者。
     detailIntro:
       <p>作为一俗人，我喜欢看这些片子：《疯狂的石头》《大话西游之仙履奇缘》《十全九美》《九阴真经》《武林外传》《The big bang theory》《The good wife》等等。</p>
-      <p>我对美非常没有抵抗力，看到美的东西我就会拼命研究。有时候我很不靠谱，尤其是我发现了一件值得做的事情之后，就会归隐若干天把其它的事撂一边。总的来说，我还是想基于心理学做一番事业。</p>
+      <p>我对美非常没有抵抗力，看到美的东西我就会拼命研究。有时候我很不靠谱，尤其是我发现了一件值得做的事情之后，就会沉寂若干天把其它的事撂一边。总的来说，我愿意基于心理学做一番事业，用科学的心理学知识提高人类的生活和智能，也希望通过不断努力推动心理学与脑科学从学术殿堂步入现实生活，期待与大家交流学习。</p>
 
 #Follow me, you can choose your icon by http://fortawesome.github.io/Font-Awesome/icons/#brand
 follow:
@@ -50,12 +50,24 @@ customLinks:
   - item:
     - text: 阳志平
       url: http://www.yangzhiping.com/
+    - text: 谢益辉
+      url: http://yihui.name/cn/
+    - text: 崔旭
+      url: http://www.alivelearn.net/
+    - text: 刘思喆
+      url: http://www.bjt.name/
+    - text: xccds
+      url: http://xccds.github.io/
+    - text: Thomas Talhelm
+      url: http://thomastalhelm.weebly.com/
+    - text: Demis Hassabis
+      url: http://www.demishassabis.com/   
+    message: 榜样们
+  - item:
     - text: Jekyll
       url: http://jekyllrb.com
     - text: Jekyll Theme
       url: http://www.zhanxin.info/themes.html
-    message: Friends
-  - item:
     - text: Font Awesome
       url: http://fortawesome.github.io/Font-Awesome/
     - text: Google Font
