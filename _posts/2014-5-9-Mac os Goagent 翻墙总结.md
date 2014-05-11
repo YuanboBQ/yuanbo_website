@@ -4,7 +4,7 @@ category : 电子数码
 tags : [翻墙]
 ---
 
-## Mac os Goagent 翻墙总结
+## Mac os Goagent 设置总结
 
 由于最近的净网行动，这两天Mac上的翻墙利器「鱼摆摆」被和谐了，无奈只能找新的替代品了。类似于「鱼摆摆」这样的软件，一段时间后用得人多了总会被和谐，目前比较稳定可靠的只能选择goagent了。Google App Engine是一个开发、托管网络应用程序的平台，使用Google管理的数据中心。它在2008年4月发布了第一个beta版本。Google App Engine使用了云计算技术。它跨越多个服务器和数据中心来虚拟化应用程序。不过goagent初次配置比较麻烦，小白用户第一次配置可能比较困难，两年前我在windows上折腾过，当时并没有成功。现在打算在Mac上配置，心里也是得没底。之前查阅了一些关于Mac上配置goagent的帖子，但看过之后还是有点云里雾里。本想找机房「小王老师」请教下，但今天他有事情，只好自己折腾了。
 
@@ -50,4 +50,4 @@ tags : [翻墙]
 <iframe height=498 width=510 src="http://player.youku.com/embed/XNjcwNzU5Nzgw" frameborder=0 allowfullscreen></iframe>
 
 ### YouTube上的视频教程（Mac版）
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/4zAswIeDsJ4" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="http://www.youtube-nocookie.com/embed/4zAswIeDsJ4" frameborder="0" allowfullscreen></iframe>
