@@ -8,7 +8,7 @@ safe:  false
 title: YUANBO
 description: Just another Jekyll theme design and code by zhanxin.info.
 keywords: Jekyll Theme
-url: http://yuanbobq.github.com
+url:  http://localhost:4000
 feed: /atom.xml
 favicon: http://i.imgur.com/I591GcA.png
 
