@@ -44,5 +44,21 @@ tags : [网络]
 这样基本上就大功告成了，你终于自由了，外面的世界任你你探索，YouTube上有很多非常好的学习视频。最后，我一般只在浏览器上用代理，所以上面的设置目前只是在chrome浏览器上实现了翻墙，如果想使用全局代理，只需要在Mac的系统偏好设置->网络->代理中简单设置下就IP和端口就可以了。	
 以后每次用的时候，只需要在终端里输入`python proxy.py`（记住终端不能关！），然后开启插件，选择goagent，就可以使用了，也就是：开终端-->开插件-->上网！不用的时候，关掉终端，插件选择最上面的“直接连接”选项，就可以了。	
 如果想开机启动goagent，在终端运行 `sudo python goagent/local/addto-startup.py` 然后再运行 `sudo launchctl load /Library/LaunchDaemons/org.goagent.macos.plist` 即可（前面的路径修改成自己电脑上goagent的路径）。这样你就不用每次开机都打开终端输入命令，goagent就在后台默默地为你提供支持了，你可以无缝使用chrome翻墙了。
+
+## Mac下关于goagent的运行和退出：
+在local目录下，终端执行
+`python proxy.py`
+也可以赋予proxy.py可执行权限之后直接双击proxy.py。（在proxy.py上面右击，属性的权限中勾选允许以程序执行文件）
+直接运行goagent-gtk.py可以使用gtk托盘方式运行goagent。 运行addto-startup.py即可加入开机启动。也可以自行添加一个启动项，命令为
+`python /path/to/goagent/local/goagent-gtk.py`
+
+其中路径修改为自己系统中goagent-gtk.py的路径 使用sudo提权之后可以自动导入证书，部分浏览器请自行手动导入证书
+如果是直接终端使用"python proxy.py"运行，在终端按"Ctrl+C"组合键可终止运行;如果使用gtk托盘，在托盘图标上右键菜单有退出选项。直接关闭终端窗口也会退出。如果以后台进程运行，先用"ps aux | grep proxy.py"找到goagent的PID，然后直接kill对应的PID 。
+ps aux|grep proxy.py|grep -v "grep"|awk '{print $2}'|xargs kill
+
+## 补充：
+关于使用go agent代理后无法打开google scholar的问题。刚开始试了很多办法都没有解决，最后升级到了最新版的[goagent3.1.11]( http://goo.gl/qFyRk)后，似乎解决了这个问题。不过我也在chrome的SwitchySharp插件规则中增加了`*://scholar.google.com/*` 这个，让它直接链接，不经过代理。
+另外一个发现，我之前在chrome中一直用的goagent代理所有网站，后来发现选择goagent PAC这个模式，可以自动切换代理，这样国内的网站打开速度完全就不受影响了，太爽啦。
+
 ### 优酷上的视频教程（windows版）
 <iframe height=498 width=510 src="http://player.youku.com/embed/XNjcwNzU5Nzgw" frameborder=0 allowfullscreen></iframe>
