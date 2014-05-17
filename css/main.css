@@ -19,12 +19,7 @@ body {
     background: #92b3a2 url(../images/bg.jpg) repeat 0 0;
     font-size: 14px;
     line-height: 1.5;
-@font-face {
- font-family: 'Lato';
- font-style: normal;
- font-weight: 400;
- src: local('Lato Regular'), local('Lato-Regular'), url(http://themes.googleusercontent.com/static/fonts/lato/v7/9k-RPmcnxYEPm8CNFsH2gg.woff) format('woff');
-}
+   font-family: Helvetica,"Hiragino Sans GB","Hiragino Sans GB W3",Arial,sans-serif;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
 }
 
