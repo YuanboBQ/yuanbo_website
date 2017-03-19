@@ -1,7 +1,7 @@
 markdown: kramdown
-pygments: true
-paginate: 8
+#pygments: true
 highlighter: rouge
+paginate: 8
 safe:  false
 
 #Site config
