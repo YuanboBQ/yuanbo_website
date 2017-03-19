@@ -1,7 +1,7 @@
 markdown: kramdown
 pygments: true
 paginate: 8
-
+highlighter: rouge
 safe:  false
 
 #Site config
@@ -22,7 +22,7 @@ nav:
     url: /categories.html
   - text: 友情链接
     url: /links.html
-
+highlighter:
 #Author config
 author:
     name: YuanBo
