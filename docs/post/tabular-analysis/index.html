@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>列联表数据的分析 - 袁博 | 敢于求知</title>
+    <meta property="og:title" content="列联表数据的分析 - 袁博 | 敢于求知">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="测量数据可以分为连续数据和非连续性数据两种。非连续性数据（discrete）又分为顺序性（ordinal）和称名性数据（nominal）两种。如果一项研究的自变量为称名数据，因变量为计数数据，我们通常用列联表方式（tabular）展示研究结果。根据自变量的个数多少，列联表又可分为一维列联表和多维列联表。通过对列联表进行假设检验，研究者关心的是实际观测值（Observed, O）和零假设条件下理论期 &amp;hellip;">
+      <meta property="og:description" content="测量数据可以分为连续数据和非连续性数据两种。非连续性数据（discrete）又分为顺序性（ordinal）和称名性数据（nominal）两种。如果一项研究的自变量为称名数据，因变量为计数数据，我们通常用列联表方式（tabular）展示研究结果。根据自变量的个数多少，列联表又可分为一维列联表和多维列联表。通过对列联表进行假设检验，研究者关心的是实际观测值（Observed, O）和零假设条件下理论期 &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/fonts.css" />
+    
+<link rel="stylesheet" href="../../css/custom.css" />
+
+  </head>
+
+  
+  <body class="post">
+    <header class="masthead">
+      
+
+<h1><a href="../../"><img src="https://apps-db.oss-cn-shenzhen.aliyuncs.com/logos/shenweiyan.png" alt="Bo Yuan" /></a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" />
+  <label id="menu-label" for="menu-check" class="unselectable">
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="../../">首页</a></li>
+  
+  <li><a href="../../about/">关于</a></li>
+  
+  <li><a href="../../resume/">简历</a></li>
+  
+  <li><a href="../../post/">日志</a></li>
+  
+  <li><a href="../../resources/">资源</a></li>
+  
+  <li><a href="../../links/">链接</a></li>
+  
+  <li><a href="../../slides/">Slides</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+  
+
+
+
+<h1>列联表数据的分析</h1>
+
+
+
+
+
+
+<h3>yuanbo &middot 
+2017-04-24</h3> 
+
+
+   
+  
+
+
+
+      </header>
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+
+
+<p>测量数据可以分为连续数据和非连续性数据两种。非连续性数据（discrete）又分为顺序性（ordinal）和称名性数据（nominal）两种。如果一项研究的自变量为称名数据，因变量为计数数据，我们通常用列联表方式（tabular）展示研究结果。根据自变量的个数多少，列联表又可分为一维列联表和多维列联表。通过对列联表进行假设检验，研究者关心的是实际观测值（Observed, O）和零假设条件下理论期望值（Expected, E）之间的关系。具体来说，一维列联表评价的是观测值在某一类别变量的不同水平上的分布是否与某个既定的分布一致。多维列联表评价的是多个类别性变量对数据的交叉分类是否存在相互关系。</p>
+<div id="一维列联表和配合度检验" class="section level2">
+<h2>1. 一维列联表和配合度检验</h2>
+<p>一维列联表分析的目的是评价观测数据与理论分布的契合程度，所以又叫做<em>配合度检验</em>（goodness of fit）。以孟德尔的遗传学为例。假设两个等位基因A和a的出现概率为<em>p</em>和1-<em>p</em>。在随机配对和随机存活条件下（random mating and survival），其后代的基因型为AA，Aa和aa的概率将分别是<span class="math inline">\(p^2\)</span>，<span class="math inline">\(2p(1−p)\)</span>和<span class="math inline">\((1−p)^2\)</span>。我们如果假定显性基因A出现的概率是<em>p</em>=0.25，则上述三种基因型出现的概率为：</p>
+<pre class="r"><code>pA &lt;- p &lt;- 0.25
+pa &lt;- 1 - p
+pAA &lt;- p ^ 2
+pAa &lt;- 2 * p * (1-p)
+paa &lt;- (1 - p) ^2
+c(pAA, pAa, paa)</code></pre>
+<pre><code>## [1] 0.0625 0.3750 0.5625</code></pre>
+<p>假如显性基因A出现的概率为0.25，而且后代基因型遵循随机交配和存活条件，那么在一个样本量为100的随机样本中，我们观测到基因型为AA、Aa、和aa的数量将分别约为6.25、37.5和56.25。假如我们实际观测到的数量为10、50和40。观测值和预期值的差别分别为3.75、12.5和-16.25。（注意：期望观测值不一定是整数；期望值和观测值的差值和为零）。配合度检验中，研究者关心的是该样本数据中观测值和预期值之间的差异究竟是由取样误差导致的，还是说明零假设不成立，即这两个等位基因不是随机配对和随机存活的。</p>
+<pre class="r"><code>Expected = c(6.25, 37.5, 56.25)
+Observed = c(10.00, 50.00, 40.00)
+value = rbind.data.frame(Observed,Expected)
+colnames(value) = c(&#39;AA&#39;,&#39;Aa&#39;,&#39;aa&#39;)
+rownames(value) = c(&#39;Expected&#39;,&#39;Observed&#39;)
+library(knitr)
+kable(value, digits = 2,format = &quot;html&quot;)</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+AA
+</th>
+<th style="text-align:right;">
+Aa
+</th>
+<th style="text-align:right;">
+aa
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Expected
+</td>
+<td style="text-align:right;">
+10.00
+</td>
+<td style="text-align:right;">
+50.0
+</td>
+<td style="text-align:right;">
+40.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Observed
+</td>
+<td style="text-align:right;">
+6.25
+</td>
+<td style="text-align:right;">
+37.5
+</td>
+<td style="text-align:right;">
+56.25
+</td>
+</tr>
+</tbody>
+</table>
+<p>统计学理论发现，对于随机取样的计数数据而言，其整体分布的方差和期望值是一样的。而且当样本量足够大时（拇指原则：当所有类别的期望值都大于5时），计数数据的分布式是近似正态的。此时，我们可以用z分数来确定观测数量（O）和期望数量（E）之间的差别是否足够大，即<span class="math display">\[ Z = \frac{O-E} {\sqrt{E}} \]</span></p>
+<pre class="r"><code>z &lt;- ( Observed - Expected ) / sqrt(Expected)
+z &lt;- abs(as.numeric(z))
+p &lt;- 2 * pnorm(z, lower.tail = FALSE)
+rbind(z, p)</code></pre>
+<pre><code>##        [,1]       [,2]       [,3]
+## z 1.5000000 2.04124145 2.16666667
+## p 0.1336144 0.04122683 0.03026028</code></pre>
+<p>考虑到多次计算z分数带来的多重比较问题和预测值观测值差异之和为零这些问题，研究者往往希望同时测试所有的z值，即卡方的配合度检验。卡方统计量的计算方式如下：</p>
+<p><span class="math display">\[ \chi^2=\sum \frac{(O−E)^2} {E}\]</span></p>
+<p>零假设条件下，<span class="math inline">\(\chi ^2\)</span>数据符合自由度为k−1的卡方分布，其中k为研究中类别的总数。利用上表中的数据，我们可以做如下计算:</p>
+<pre class="r"><code>Chi_sqr &lt;- sum (z ^ 2)
+df &lt;- length(Observed) - 1
+p_value &lt;- pchisq(Chi_sqr, df, lower.tail = FALSE)
+cbind(Chi_sqr, p_value)</code></pre>
+<pre><code>##       Chi_sqr    p_value
+## [1,] 11.11111 0.00386592</code></pre>
+<p>等价的， 我们也可以用R自带的<code>chisq.test()</code>直接进行计算，</p>
+<pre class="r"><code>p &lt;- 0.25
+prop &lt;- c(p^2, 2 * p * (1-p), (1-p)^2)
+suppressWarnings(
+chisq.test(Observed, p = prop)
+)</code></pre>
+<pre><code>## 
+##  Chi-squared test for given probabilities
+## 
+## data:  Observed
+## X-squared = 11.111, df = 2, p-value = 0.003866</code></pre>
+<p>这些结果说明，如果我们假定显性基因的出现率为<em>p</em>=0.25时，那么在随机配对和随机成活的条件下，我们不太可能能观测到目前的数据。</p>
+<p>一个计数数据的分布形态，通常可以用一个或几个参数来确定。前述技术数据的分布仅涉及一个参数，即<em>p</em>。在上述分析中，我们根据先前经验将<em>p</em>假定为<em>p</em>=0.25。但在大多数情况下，研究者并没有相应的经验来确定参数p值。此时，研究者必须用获取的样本数据对该参数值进行估计。在执行该估计的过程中，假设检验的自由度将受被估计参数个数的限制而进一步变小。以前述观测数据为例，我们可以用如下公式来估计p，即A出现的概率。</p>
+<pre class="r"><code>p &lt;- (2 * 10 + 1 * 50) / 200
+p</code></pre>
+<pre><code>## [1] 0.35</code></pre>
+<p>注意，该公式中分母不是样本量100，而是样本量的两倍，即200，因为该研究中基因型是一个二倍体。如果我们用这个从样本估计出来的p来代替原来的p值，那么数据中的期望值和差值都会发生改变， 如下表</p>
+<pre class="r"><code>Expected = c(10.00, 50.00, 40.00)
+Observed = c(12.25, 45.50, 42.25)
+value = rbind.data.frame(Observed,Expected)
+colnames(value) = c(&#39;AA&#39;,&#39;Aa&#39;,&#39;aa&#39;)
+rownames(value) = c(&#39;Expected&#39;,&#39;Observed&#39;)
+library(knitr)
+kable(value, digits = 2,format = &quot;html&quot;)</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+AA
+</th>
+<th style="text-align:right;">
+Aa
+</th>
+<th style="text-align:right;">
+aa
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Expected
+</td>
+<td style="text-align:right;">
+12.25
+</td>
+<td style="text-align:right;">
+45.5
+</td>
+<td style="text-align:right;">
+42.25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Observed
+</td>
+<td style="text-align:right;">
+10.00
+</td>
+<td style="text-align:right;">
+50.0
+</td>
+<td style="text-align:right;">
+40.00
+</td>
+</tr>
+</tbody>
+</table>
+<p>根据估计出来的<em>p</em>值，我们得出来的卡方值是 <span class="math inline">\(\chi ^2\)</span> = 0.98。因为我们要从样本数据中估计一个参数值，所以分布自由度又减少了一个，剩余自由度为<code>df=3−1−1=1</code>。基于此，我们得出的P值为<em>p</em>=0.32。此时，根据上述样本数据，我们就无法拒绝基因型的随机配对和随机成活这一零假设了。这与当我们假定显性基因的出现概率为<em>p</em>=0.25时的结果完全不同。因此我们可以得出如下结论：前述检验之所以能拒绝零假设，原因来自于我们假定的整体参数值，而不是来源于在某个给定等位基因A的分布概率下，表现型的异常分布。</p>
+<pre class="r"><code>z &lt;- ( Observed - Expected ) / sqrt(Expected)
+z &lt;- abs(as.numeric(z))
+p &lt;- 2 * pnorm(z, lower.tail = FALSE)
+Chi_sqr &lt;- sum (z ^ 2)
+df &lt;- length(Observed) - 1 - 1
+p_value &lt;- pchisq(Chi_sqr, df, lower.tail = FALSE)
+cbind(Chi_sqr, p_value)</code></pre>
+<pre><code>##       Chi_sqr   p_value
+## [1,] 1.037812 0.3083308</code></pre>
+</div>
+
+
+

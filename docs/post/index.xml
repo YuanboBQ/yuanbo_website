@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 袁博 | 敢于求知</title>
+    <link>https://yuanbo.netlify.app/post/</link>
+    <description>Recent content in Posts on 袁博 | 敢于求知</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cmn-Hans</language>
+    <lastBuildDate>Wed, 25 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://yuanbo.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>研一同学入门学习资料</title>
+      <link>https://yuanbo.netlify.app/post/first-year-reading-material/</link>
+      <pubDate>Wed, 25 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/first-year-reading-material/</guid>
+      <description>研一同学入门学习资料 课题组简介 社会认知与道德决策实验室 (Social cognition &amp;amp; moral decision-making lab, SCMD LAB) 是我们在宁波大学心理学系的实验室。目前实验室的研究领域主要集中在社会认</description>
+    </item>
+    
+    <item>
+      <title>如何在python中draw samples</title>
+      <link>https://yuanbo.netlify.app/post/python-drawing-samples/</link>
+      <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/python-drawing-samples/</guid>
+      <description>如何在python中draw samples https://stackoverflow.com/questions/10803135/weighted-choice-short-and-simple/15907274 [Youtube videos tutorial]https://www.youtube.com/watch?v=KzqSDvzOFNA&amp;amp;pbjreload=101&amp;amp;ab_channel=CoreySchafer Since Python 3.6 there is a method choices from the random module. import random random.choices(population = [[&amp;#39;a&amp;#39;,&amp;#39;b&amp;#39;], [&amp;#39;b&amp;#39;,&amp;#39;a&amp;#39;], [&amp;#39;c&amp;#39;,&amp;#39;b&amp;#39;]], weights = [0.2, 0.2, 0.6], k = 10) import random random.choices([&amp;#39;one&amp;#39;, &amp;#39;two&amp;#39;, &amp;#39;three&amp;#39;], [0.2, 0.3, 0.5], k=10) 也可以用numpy模块 numpy.random.choice(items, trials, p =</description>
+    </item>
+    
+    <item>
+      <title>统计检验力与样本量</title>
+      <link>https://yuanbo.netlify.app/post/statistical-power-samples/</link>
+      <pubDate>Fri, 26 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/statistical-power-samples/</guid>
+      <description>https://www.bilibili.com/video/BV1Tb411J7Sm?p=1 如何计算多因素的样本量</description>
+    </item>
+    
+    <item>
+      <title>老年人的社会决策研究</title>
+      <link>https://yuanbo.netlify.app/post/elderly-social-decision-proposal/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/elderly-social-decision-proposal/</guid>
+      <description>dishonesty between the elderly and younger trustworthy between the elderly and younger regret between the elderly and younger</description>
+    </item>
+    
+    <item>
+      <title>深度学习小结</title>
+      <link>https://yuanbo.netlify.app/post/deep-learning-summary/</link>
+      <pubDate>Mon, 11 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/deep-learning-summary/</guid>
+      <description>深度学习小结 最近一周，学习了一些深度学习的知识，并用python和R进行一些实战的演练，觉得这个领域非常有趣，先进行一个小结，以后会进一步深</description>
+    </item>
+    
+    <item>
+      <title>统计检验力与样本量的计算</title>
+      <link>https://yuanbo.netlify.app/post/calculate-statistical-power-and-sample/</link>
+      <pubDate>Tue, 20 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/calculate-statistical-power-and-sample/</guid>
+      <description>统计检验力与样本量的计算 单个研究的统计检验力（statistic power）和样本量（sample size）可能是研究可能会争论比较多的问题</description>
+    </item>
+    
+    <item>
+      <title>心理学考研辅导：统计学</title>
+      <link>https://yuanbo.netlify.app/post/psychologyical-master-counselling-statistical/</link>
+      <pubDate>Sun, 17 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/psychologyical-master-counselling-statistical/</guid>
+      <description>心理统计辅导大纲 真题演练 2007年 2015年 51．当总体中的个体具有周期性规律是，不适用抽样方法是（ ） A．简单随机抽样 B．分成抽样 C．等距抽</description>
+    </item>
+    
+    <item>
+      <title>p-curve 分析：一种用元分析的新方法</title>
+      <link>https://yuanbo.netlify.app/post/p-curve-a-new-method-meta-analysis/</link>
+      <pubDate>Sun, 20 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/p-curve-a-new-method-meta-analysis/</guid>
+      <description>本文主要介绍p-curve分析的基本原理，p-curve分析的基本步骤，如何在文献中报告p-curve结果，以及p-curve在元分析中的应</description>
+    </item>
+    
+    <item>
+      <title>Pandoc安装与使用教程</title>
+      <link>https://yuanbo.netlify.app/post/pandoc-tutorail/</link>
+      <pubDate>Fri, 11 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/pandoc-tutorail/</guid>
+      <description>最近，尝试用 markdown 进行论文写作，所以研究了下 markdown 的到各种格式转换。而谈到标记语言的转换，就不得不提Pandoc，Pandoc可以说是markdow</description>
+    </item>
+    
+    <item>
+      <title>Citation Style Language (CSL)学习笔记</title>
+      <link>https://yuanbo.netlify.app/post/csl-notebook/</link>
+      <pubDate>Sat, 05 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/csl-notebook/</guid>
+      <description>最近，试着在 markdown 中进行论文写作，发现可以用 pandoc 进行文献插入工作，而 pandoc(包括 Zotero)进行参考文献的引文样式管理采用的是 csl 引文样式（</description>
+    </item>
+    
+    <item>
+      <title>关于Agency Detection 的解释</title>
+      <link>https://yuanbo.netlify.app/post/interpretation-agency-detection/</link>
+      <pubDate>Mon, 24 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/interpretation-agency-detection/</guid>
+      <description>今天有个学生说看文献的时候碰到一个问题，Agency Detection如何理解？我自己之前也没有接触过这个概念，于是便查了下。根据字面的翻译</description>
+    </item>
+    
+    <item>
+      <title>tdcs 培训小结</title>
+      <link>https://yuanbo.netlify.app/post/tdcs-workshop-summary/</link>
+      <pubDate>Sun, 18 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/tdcs-workshop-summary/</guid>
+      <description>最近，系里请厂商进行了一次 tdcs 的培训。主要是简单培训了进行 tdcs 实验过程中的一些问题。培训内容讲得比较简单，具体的操作过程还不是很清楚，要等到自己</description>
+    </item>
+    
+    <item>
+      <title>如何进行中介与调节效应分析</title>
+      <link>https://yuanbo.netlify.app/post/how-to-run-meditation-modration/</link>
+      <pubDate>Sat, 17 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/how-to-run-meditation-modration/</guid>
+      <description>最近分析实验数据，用到中介与调节效应分析，在此总结下如何在 spss 和 R 中进行中介与调节效应分析，以及如何在论文中报告中介与调节效应。 中介效应 中介效</description>
+    </item>
+    
+    <item>
+      <title>Psychopy 中常用的一些script</title>
+      <link>https://yuanbo.netlify.app/post/psychopy-scripts/</link>
+      <pubDate>Tue, 13 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/psychopy-scripts/</guid>
+      <description>real_exp_feedback=u&amp;quot;本轮中你选择了$f_num 次&amp;rsquo;f&amp;rsquo;键，$j_num 次‘j’键，本轮</description>
+    </item>
+    
+    <item>
+      <title>心理学领域的主要期刊列表</title>
+      <link>https://yuanbo.netlify.app/post/psychology-journal-list/</link>
+      <pubDate>Sun, 11 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/psychology-journal-list/</guid>
+      <description>总结了一些心理学领域的主要期刊，以备以后下载或投稿查用。^[在 Google 中搜索期刊名+impact factor就可以显示该期刊的影响因子] 重要期刊 Science,</description>
+    </item>
+    
+    <item>
+      <title>铁打的老师，流水的学生</title>
+      <link>https://yuanbo.netlify.app/post/stable-teacher-moblie-student/</link>
+      <pubDate>Thu, 01 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/stable-teacher-moblie-student/</guid>
+      <description>又到了毕业季，学生毕业不免离别与伤感，其实老师又何尝不是。最近，有几个本科生和研究生即将毕业，我也觉得有些情绪失落。有些学生交往和培养了很久</description>
+    </item>
+    
+    <item>
+      <title>哪里都有权力的争斗</title>
+      <link>https://yuanbo.netlify.app/post/power-combat-everywhere/</link>
+      <pubDate>Wed, 31 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/power-combat-everywhere/</guid>
+      <description>以前总是地以为，学校是清净的地方，不会存在尔虞我诈、勾心斗角，这也是我想留在高校的一个主要原因。但是现在越来越发现自己过于天真了，哪里都会有</description>
+    </item>
+    
+    <item>
+      <title>远离微信朋友圈</title>
+      <link>https://yuanbo.netlify.app/post/keep-away-weichat/</link>
+      <pubDate>Mon, 29 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/keep-away-weichat/</guid>
+      <description>最近觉得微信（尤其是朋友圈）严重影响到工作效率和生活质量，所以选择关闭了微信的朋友圈功能。微信把我们都绑架在手机上，占用了我们大量的时间，并</description>
+    </item>
+    
+    <item>
+      <title>用大数据理解面部特征与人格的关系</title>
+      <link>https://yuanbo.netlify.app/post/big-data-facial-features-personality/</link>
+      <pubDate>Sat, 27 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/big-data-facial-features-personality/</guid>
+      <description>This presentation features Michal Kosinski, Stanford University. It is one of four presentations from the Big Data: Vast Opportunities for Psychological Insight symposium, presented at the 16th Annual Society for Personality and Social Psychology Convention.</description>
+    </item>
+    
+    <item>
+      <title>创造性最大的障碍是太忙</title>
+      <link>https://yuanbo.netlify.app/post/the-biggest-obstacle-to-creativity-is-being-too-busy/</link>
+      <pubDate>Mon, 22 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/the-biggest-obstacle-to-creativity-is-being-too-busy/</guid>
+      <description>研究发现影响创造性最大的障碍就是太忙。Happiness research shows the biggest obstacle to creativity is being too busy 从文森特·梵高到肯伊·威斯特，多产的艺术家给大众留下的印象都是</description>
+    </item>
+    
+    <item>
+      <title>机器学习知识小结</title>
+      <link>https://yuanbo.netlify.app/post/summary-of-machine-learning/</link>
+      <pubDate>Sun, 21 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/summary-of-machine-learning/</guid>
+      <description>什么机器学习 从广义上来说，机器学习(Machine Learning, ML)是一种能够赋予机器学习的能力以此让它完成直接编程无法完成的功能的方法。但从实践的意</description>
+    </item>
+    
+    <item>
+      <title>如何读一篇科学论文</title>
+      <link>https://yuanbo.netlify.app/post/reading-a-scientific-paper/</link>
+      <pubDate>Fri, 19 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/reading-a-scientific-paper/</guid>
+      <description>Starting note: Perhaps the primary difference between reading the scientific literature and reading other kinds of documents is that linear reading is not rewarded. Reading from start to finish is not useful if you don&amp;rsquo;t extract the information that you need; likewise, you will see people who don’t read start to finish but extract all of the useful information much more quickly. Learn to “r</description>
+    </item>
+    
+    <item>
+      <title>社会性类别认知的起源</title>
+      <link>https://yuanbo.netlify.app/post/origin-of-social-categorization/</link>
+      <pubDate>Thu, 18 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/origin-of-social-categorization/</guid>
+      <description>1. 社会类别认知 类别认知 (categorization) 指把个体划分为不同的类别，并且知道归属于同一类别所有成员都有某些不变的、重要的、甚至是无法直接观察的相似性。这种认知</description>
+    </item>
+    
+    <item>
+      <title>关于风险态度的测量</title>
+      <link>https://yuanbo.netlify.app/post/measures-risk-attitude/</link>
+      <pubDate>Fri, 05 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/measures-risk-attitude/</guid>
+      <description>Risk attitude is formally modeled as the shape of a decision maker’s utility profile (see Weber, Blais, &amp;amp; Betz (2002) for an overview of different risk frameworks). Measures of risk attitude assess decision makers’ perceptions of risk and/or their preferred levels of risk. We distinguish between three separate approaches to measurement of risk attitude: Behavioral measures of risk:</description>
+    </item>
+    
+    <item>
+      <title>在 Python 中获取文件所在路径</title>
+      <link>https://yuanbo.netlify.app/post/python-current-direction/</link>
+      <pubDate>Thu, 04 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/python-current-direction/</guid>
+      <description>在 psychopy 中保存实验结果的文件时，需要用到保存路径。在 python 中如何获取当前文件所在的路径。 首先要装载 os 模块： import os，然后用print os.getcwd</description>
+    </item>
+    
+    <item>
+      <title>R软件中的缺失值处理</title>
+      <link>https://yuanbo.netlify.app/post/r-missing-value/</link>
+      <pubDate>Tue, 02 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/r-missing-value/</guid>
+      <description>最近处理数据时，碰到缺失值问题，总结了下在 R 中如何处理缺失值。 一、什么是缺失值，NA与NULL的区别 NA表示数据集中的该数据遗失、不存在。在</description>
+    </item>
+    
+    <item>
+      <title>列联表数据的分析</title>
+      <link>https://yuanbo.netlify.app/post/tabular-analysis/</link>
+      <pubDate>Mon, 24 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/tabular-analysis/</guid>
+      <description>测量数据可以分为连续数据和非连续性数据两种。非连续性数据（discrete）又分为顺序性（ordinal）和称名性数据（nominal）两种</description>
+    </item>
+    
+    <item>
+      <title>有趣的心理学研究</title>
+      <link>https://yuanbo.netlify.app/post/interesting-psychological-studies/</link>
+      <pubDate>Fri, 21 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/interesting-psychological-studies/</guid>
+      <description>人格与社会 Psychological science 上一篇研究发现，戴自行车头盔会增加成人的风险与感觉寻求。 之前的研究发现被人眼睛看着会更加大方，愿意捐更多钱，这种效应被称为su</description>
+    </item>
+    
+    <item>
+      <title>Psychopy 学习记录</title>
+      <link>https://yuanbo.netlify.app/post/psychopy-study-note/</link>
+      <pubDate>Sat, 15 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/psychopy-study-note/</guid>
+      <description>最近在群里看到王治国老师关于 psychopy 的教程，又燃起了我学习 psychopy 的热情。昨天晚上折腾了很久，自己手动安装了 psychopy 的程序，现在可以完全不依赖 standalone 版运行编写的程</description>
+    </item>
+    
+    <item>
+      <title>川川的趣话</title>
+      <link>https://yuanbo.netlify.app/post/chuan-interesting-speak/</link>
+      <pubDate>Thu, 13 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/chuan-interesting-speak/</guid>
+      <description>最近川川会时不时地冒出一些有趣的话来，记下以后留有念想。 看到我苹果手机的 Logo，突然对我说：「苹果，谁咬？」 路上听到青蛙叫的声音，问我们：</description>
+    </item>
+    
+    <item>
+      <title>使用 Hugo搭建 Blog</title>
+      <link>https://yuanbo.netlify.app/post/hugo-blog-updog/</link>
+      <pubDate>Wed, 12 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/hugo-blog-updog/</guid>
+      <description>前些天看了[谢益辉] (http://yihui.name/cn/)的博客，又被诱惑了。折腾了几天，终于把 Blog 的系统从 jekyll 换成了 Hugo。得益于他</description>
+    </item>
+    
+    <item>
+      <title>Mac OS下在Dropbox中建立软连接</title>
+      <link>https://yuanbo.netlify.app/post/dropbox-soft-links/</link>
+      <pubDate>Tue, 11 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/dropbox-soft-links/</guid>
+      <description>背景 需要同步到Dropbox的内容都得放置在一个文件夹里面，默认名字叫&amp;quot;Dropbox&amp;quot;。 问题 实际情况是：许多文档，代码</description>
+    </item>
+    
+    <item>
+      <title>Chrome 分辨率突然变的很低</title>
+      <link>https://yuanbo.netlify.app/post/chrome-resolution-problem/</link>
+      <pubDate>Mon, 10 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/chrome-resolution-problem/</guid>
+      <description>晚上10：00洗漱完之后，回书房正打算写一些东西，Mac电脑突然死机了。重启后其他没有什么问题，打开 Chrome 浏览器，发现辨率很低，字基本上不清楚，</description>
+    </item>
+    
+    <item>
+      <title>关于心理的有趣的段子</title>
+      <link>https://yuanbo.netlify.app/post/psychology-joke/</link>
+      <pubDate>Fri, 02 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/psychology-joke/</guid>
+      <description>Philosophy vs. Metaphysics vs. Theology vs. Science Philosophy 哲学就像在一间黑屋子里寻找一只黑猫 Metaphysics 玄学就像在一间黑屋子里寻找一只不存在的黑猫 Theology 神学就像在一间黑屋子里寻找一只不存在的黑猫还</description>
+    </item>
+    
+    <item>
+      <title>请相信你可以成长</title>
+      <link>https://yuanbo.netlify.app/post/mindeset/</link>
+      <pubDate>Mon, 28 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/mindeset/</guid>
+      <description>卡罗尔•德韦克研究「成长型思维模式」——我们能够锻炼大脑，提升学习和解决问题的能力。面对一个对你而言稍稍偏难的问题，你如何应对？在这个演讲中</description>
+    </item>
+    
+    <item>
+      <title>心理学中的跨感觉通道研究</title>
+      <link>https://yuanbo.netlify.app/post/cross-modality-studies/</link>
+      <pubDate>Thu, 26 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/cross-modality-studies/</guid>
+      <description>这篇《纽约客》上的博客介绍了关于跨感觉通道研究。《纽约客》的科普文章是我心中的标杆，优雅、有趣又有料。 把咸爆米花放在红色罐子里，你吃起来会觉</description>
+    </item>
+    
+    <item>
+      <title>工作一年总结</title>
+      <link>https://yuanbo.netlify.app/post/work-one-year/</link>
+      <pubDate>Sat, 07 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/work-one-year/</guid>
+      <description>不知不觉毕业工作已经一年有余，这一年来，快乐有过、艰辛有过、痛苦有过；取得了一些成绩，也存在着很多不足。总之发生了很多事情，人生的很多大事都</description>
+    </item>
+    
+    <item>
+      <title>Mac OS上配置Goagent</title>
+      <link>https://yuanbo.netlify.app/post/mac-vpn/</link>
+      <pubDate>Sat, 09 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/mac-vpn/</guid>
+      <description>由于最近的净网行动，这两天Mac上的翻墙利器「鱼摆摆」被和谐了，无奈只能找新的替代品了。类似于「鱼摆摆」这样的软件，一段时间后用得人多了总会</description>
+    </item>
+    
+    <item>
+      <title>毕业随想</title>
+      <link>https://yuanbo.netlify.app/post/graduate-sentiment/</link>
+      <pubDate>Sat, 21 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/graduate-sentiment/</guid>
+      <description>所有的结局都已写好，所有的泪水也都已启程，却忽然忘了是怎样的一个开始。 大学毕业又已五年，五年前毕业的场景还不时地会闯入脑海，提醒着过去的美好</description>
+    </item>
+    
+    <item>
+      <title>Viemo上一段精彩的延时摄影视频</title>
+      <link>https://yuanbo.netlify.app/post/viemo-time-lapse-photography/</link>
+      <pubDate>Tue, 20 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/viemo-time-lapse-photography/</guid>
+      <description>这几日，被vimeo上这个视频震撼了，每天都会看上一遍。Simon Christen 采用延时摄影技术拍摄了San Francisco Bay Area上空的云雾，精彩万分，恍若仙境。</description>
+    </item>
+    
+    <item>
+      <title>Github博客有关的git命令</title>
+      <link>https://yuanbo.netlify.app/post/git-blog-command/</link>
+      <pubDate>Sat, 17 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/git-blog-command/</guid>
+      <description>使用Github pages可以像hacker一样发布blog，这里总结一下和发布博客有关的最常用、最基本的git命令。git是一个版本控制系</description>
+    </item>
+    
+    <item>
+      <title>恋爱中的幸福时刻</title>
+      <link>https://yuanbo.netlify.app/post/happy-time/</link>
+      <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuanbo.netlify.app/post/happy-time/</guid>
+      <description>今天陪她去八楼，碰到一位几年不见的故人。回去的路上很多我们之间的往事闪现在脑海中，突然意识到我们已经在一起四年多了，感叹四年原来过得那么快。</description>
+    </item>
+    
+  </channel>
+</rss>

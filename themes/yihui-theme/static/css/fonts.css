@@ -1,0 +1,56 @@
+@font-face {
+  font-family: 'Yanone Kaffeesatz';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Yanone Kaffeesatz Regular'), local('YanoneKaffeesatz-Regular'),
+       url('../fonts/yanone-kaffeesatz.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Alegreya';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Alegreya'), local('Alegreya-Regular'),
+       url('../fonts/alegreya-regular.woff2') format('woff2'),
+       url('../fonts/alegreya-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Alegreya';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Alegreya Italic'), local('Alegreya-Italic'),
+       url('../fonts/alegreya-italic.woff2') format('woff2'),
+       url('../fonts/alegreya-italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Code Pro'), local('SourceCodePro-Regular'),
+       url('../fonts/source-code-pro.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'PT Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: local('PT Mono'), local('PTMono-Regular'),
+       url('../fonts/pt-mono-regular.woff2') format('woff2'),
+       url('../fonts/pt-mono-regular.woff') format('woff');
+}
+
+
+body {
+  font-family: 'Yanone Kaffeesatz', 'Alegreya', 'Palatino Linotype', 'Book Antiqua',  'Hei', 'Microsoft YaHei', 'NSimSun', 'Songti SC', 'FangSong', serif;
+}
+
+blockquote {
+  font-family:  'Alegreya', 'Palatino Linotype',  Tahoma, 'Source Sans Pro', Geneva, 'STKaiti', 'KaiTi', '楷体', 'SimKai', 'DFKai-SB', 'NSimSun', serif;
+}
+
+code {
+  font-family: 'Source Code Pro';
+  font-size: 80%;
+}

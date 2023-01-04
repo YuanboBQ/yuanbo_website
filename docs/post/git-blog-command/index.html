@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Github博客有关的git命令 - 袁博 | 敢于求知</title>
+    <meta property="og:title" content="Github博客有关的git命令 - 袁博 | 敢于求知">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="使用Github pages可以像hacker一样发布blog，这里总结一下和发布博客有关的最常用、最基本的git命令。git是一个版本控制系统。官方的解释是:
+[&amp;hellip;] 版本控制(Revision control)是一种软件工程技巧,籍以在开发的过程中,确保由不同人所编辑的同一档案都得到更新。
+[&amp;hellip;] 用个通俗的比喻你可以理解为:
+[&amp;hellip;] 一群志同道合的人 &amp;hellip;">
+      <meta property="og:description" content="使用Github pages可以像hacker一样发布blog，这里总结一下和发布博客有关的最常用、最基本的git命令。git是一个版本控制系统。官方的解释是:
+[&amp;hellip;] 版本控制(Revision control)是一种软件工程技巧,籍以在开发的过程中,确保由不同人所编辑的同一档案都得到更新。
+[&amp;hellip;] 用个通俗的比喻你可以理解为:
+[&amp;hellip;] 一群志同道合的人 &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/fonts.css" />
+    
+<link rel="stylesheet" href="../../css/custom.css" />
+
+  </head>
+
+  
+  <body class="post">
+    <header class="masthead">
+      
+
+<h1><a href="../../"><img src="https://apps-db.oss-cn-shenzhen.aliyuncs.com/logos/shenweiyan.png" alt="Bo Yuan" /></a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" />
+  <label id="menu-label" for="menu-check" class="unselectable">
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="../../">首页</a></li>
+  
+  <li><a href="../../about/">关于</a></li>
+  
+  <li><a href="../../resume/">简历</a></li>
+  
+  <li><a href="../../post/">日志</a></li>
+  
+  <li><a href="../../resources/">资源</a></li>
+  
+  <li><a href="../../links/">链接</a></li>
+  
+  <li><a href="../../slides/">Slides</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+  
+
+
+
+<h1>Github博客有关的git命令</h1>
+
+
+
+
+
+
+<h3>yuanbo &middot 
+2014-05-17</h3> 
+
+
+   
+  
+
+
+
+      </header>
+
+
+  
+  
+  
+
+  
+  
+  
+
+  <p>使用Github pages可以像hacker一样发布blog，这里总结一下和发布博客有关的最常用、最基本的git命令。git是一个版本控制系统。官方的解释是:</p>
+<blockquote>
+<p>版本控制(Revision control)是一种软件工程技巧,籍以在开发的过程中,确保由不同人所编辑的同一档案都得到更新。</p>
+</blockquote>
+<p>用个通俗的比喻你可以理解为:</p>
+<blockquote>
+<p>一群志同道合的人身处祖国各地,希望来合作开发一个项目（比如这个项目是使用 c 语言写的，当然用任何语言都可以的)。那么大家怎么合作呢?用信件?效率太低。用邮件，不好实现多人沟通。用 google group 吧,可开发阶段中的源代码没法科学管理。用自建的网站吧，需要人力物力财力来支撑。这个时候版本控制系统就派上用场了。它可以让一个团队里的不同的人在不同地点、不同时间开发和改进同一个项目，并且在大部分的时间里，版本控制系统会聪明的帮你把不同的人在不同地点不同时间修改的代码融合到项目中去。</p>
+</blockquote>
+<p>There are three states that your git project can be in:</p>
+<ol>
+<li>You are just working normally in your <em>working directory</em>. </li>
+</ol>
+<p><a href="https://vickysteeves.gitlab.io/repro-papers/img/git-stages0.png"></a></p>
+<ol start="2">
+<li>You want to <em>stage</em> your work, so git knows it could potentially become the next version. </li>
+</ol>
+<p><a href="https://vickysteeves.gitlab.io/repro-papers/img/git-stages1.png"></a></p>
+<ol start="3">
+<li>Your changes become the newest version in <em>the repository</em>! </li>
+</ol>
+<p><a href="https://vickysteeves.gitlab.io/repro-papers/img/git-stages2.png"></a></p>
+<p>As you work, you move between these three states many, many times throughout the life of a project. </p>
+<p><a href="https://vickysteeves.gitlab.io/repro-papers/img/git-stages.png"></a></p>
+<p>下面是git常用的命令：</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>我们在电脑上写完或者修改blog之后，一般会用到如下命令把新的blog提交到github上。</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>使用<code>git add </code>添加要提交的具体文件，<code>git add .</code>这个命令要求 git 给目前的这个项目制作一个快照，也可以用<code>git add -i</code>来智能添加文件。修改完blog或者文件后，使用<code>git status</code>可以查看文件的差别，之后<code>git commit</code>提交本次修改，<code>git push</code>上传到github。</p>
+
+
+

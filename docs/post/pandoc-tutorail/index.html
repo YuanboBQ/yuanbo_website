@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Pandoc安装与使用教程 - 袁博 | 敢于求知</title>
+    <meta property="og:title" content="Pandoc安装与使用教程 - 袁博 | 敢于求知">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="最近，尝试用 markdown 进行论文写作，所以研究了下 markdown 的到各种格式转换。而谈到标记语言的转换，就不得不提Pandoc，Pandoc可以说是markdown的转换利器。几年前就有所耳闻，但那时只是简单了解和试用下，并没有深入地学习。最近因为用到markdown 进行论文写作，就仔细研究了一番，并简单记录下学习Pandoc的过程。
+Pandoc是由John MacFarlane &amp;hellip;">
+      <meta property="og:description" content="最近，尝试用 markdown 进行论文写作，所以研究了下 markdown 的到各种格式转换。而谈到标记语言的转换，就不得不提Pandoc，Pandoc可以说是markdown的转换利器。几年前就有所耳闻，但那时只是简单了解和试用下，并没有深入地学习。最近因为用到markdown 进行论文写作，就仔细研究了一番，并简单记录下学习Pandoc的过程。
+Pandoc是由John MacFarlane &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/fonts.css" />
+    
+<link rel="stylesheet" href="../../css/custom.css" />
+
+  </head>
+
+  
+  <body class="post">
+    <header class="masthead">
+      
+
+<h1><a href="../../"><img src="https://apps-db.oss-cn-shenzhen.aliyuncs.com/logos/shenweiyan.png" alt="Bo Yuan" /></a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" />
+  <label id="menu-label" for="menu-check" class="unselectable">
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="../../">首页</a></li>
+  
+  <li><a href="../../about/">关于</a></li>
+  
+  <li><a href="../../resume/">简历</a></li>
+  
+  <li><a href="../../post/">日志</a></li>
+  
+  <li><a href="../../resources/">资源</a></li>
+  
+  <li><a href="../../links/">链接</a></li>
+  
+  <li><a href="../../slides/">Slides</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+  
+
+
+
+<h1>Pandoc安装与使用教程</h1>
+
+
+
+
+
+
+<h3>yuanbo &middot 
+2017-08-11</h3> 
+
+
+   
+  
+
+
+
+      </header>
+
+
+  
+  
+  
+
+  
+  
+  
+
+  <p>最近，尝试用 markdown 进行论文写作，所以研究了下 markdown 的到各种格式转换。而谈到标记语言的转换，就不得不提<a href="http://pandoc.org/index.html">Pandoc</a>，Pandoc可以说是markdown的转换利器。几年前就有所耳闻，但那时只是简单了解和试用下，并没有深入地学习。最近因为用到markdown 进行论文写作，就仔细研究了一番，并简单记录下学习Pandoc的过程。</p>
+<p><a href="http://pandoc.org/index.html">Pandoc</a>是由<a href="">John MacFarlane</a>开发的标记语言转换工具，可以实现不同标记语言间的格式转换，被称为该领域中的“瑞士军刀”。Pandoc使用Haskell语言编写，以命令行形式实现与用户的交互，支持多种操作系统。Pandoc不仅可以进行转换，还扩展了 markdown 语法，使其功能更为强大，包括参考文献的引用功能。</p>
+<h1 id="安装">安装</h1>
+<p>Pandoc提供以下安装方式（如果需要输出PDF文档，除Pandoc本身以外，还应另外安装LaTeX套件）。</p>
+<h2 id="windows及mac-os-x">Windows及Mac OS X</h2>
+<p>下载<a href="http://pandoc.org/installing.html">安装包</a>并执行安装程序。对于Mac OS X用户，还可以使用homebrew进行安装，具体安装命令如下: <code>brew install pandoc</code>。另外要注意Windows平台需要将Pandoc加入Path目录才能在cmd环境中调用^[如果发现没有pandoc命令，说明还没有将安装目录添加到系统Path中]。</p>
+<h2 id="linux-系统">Linux 系统</h2>
+<p>尝试使用Linux发行版的软件管理工具安装，目前Pandoc已加入Debian、Ubuntu、Slackware、Arch、Fedora、NiXOS和gentoo的软件仓库。
+如果无法通过软件管理工具直接安装Pandoc，则可采取下面介绍的全平台安装方式，即首先安装Haskell平台，再在其基础上安装Pandoc。绝大多数Linux发行版的软件仓库中都包含Haskell平台。</p>
+<h2 id="安装tex支持可选用于编译tex并输出pdf">安装Tex支持（可选，用于编译Tex并输出PDF）</h2>
+<ul>
+<li>Windows平台建议<a href="http://miktex.org/">MiKTeX</a></li>
+<li>MacOS平台建议<a href="https://www.tug.org/mactex/morepackages.html">BasicTeX</a>并使用tlmgr工具安装需要的包</li>
+<li>Linux平台建议Tex Live</li>
+</ul>
+<h1 id="使用">使用</h1>
+<p>Pandoc的基本指令格式是：
+<code>pandoc [options] [input-file]</code>
+简单的格式转换指令如下（从 markdown 到 html 格式）：
+<code>pandoc -o output.html input.md</code>
+其中-o ouput.html表示输出文件为output.html，input.md是输入文件。
+Pandoc会根据文件的后缀名自动判断格式，用户也可以显式地指定输入文件和输出文件格式：
+<code>pandoc -f markdown -t html -o output.html input.md</code>
+其中<code>-f markdown</code>表示输入文件格式为Markdown，<code>-t html</code>表示输出文件格式为HTML。</p>
+<p>我使用Pandoc最主要的功能就是利用它来生成HTML和PDF文件，先讨论HTML的配置方法，再来说明pdf的配置。</p>
+<h2 id="生成html">生成HTML</h2>
+<p>将markdown生成html，是Pandoc最基本的一个功能，使用起来也是非常简单，打开command，切换到makrdown文本所在的目录，写入如下代码
+<code>pandoc -o output.html input.md</code>，程序运行之后，就会在当前目录下生成一个相应的output.html文件。
+上面这是最基本的用法了，但是这还不能满足我的日常需求，单纯的html文件太过单调了，只有配上相应的CSS样式，才能使得文本以更加优美的方式展现出来。pandoc完全支持加入css一起渲染，利用如下的命令：<code>pandoc -c style.css input.md -o output.html</code>。其中style.css是为生成的html文件编写的样式文件，如果你将 css文件放在非当前目录下，需要在前面加上指定的路径。</p>
+<h2 id="生成独立html">生成独立HTML</h2>
+<p>通常来说，写作的目的是写给别人来看的，但是如果是使用html文件的格式的话，那么每次传输都需要传送整个目录文件，因为会有很多图片或css文件需要一起被传送，否则html会无法正确显示。这显然是很麻烦的，有没有办法让pandoc在生成的时候，自动把style.css中样式代码直接嵌入到html中呢？办法当然是有的。主要有两种方法：</p>
+<p>第一种是使用方法是使用如下的命令:</p>
+<pre><code>pandoc -s -H style.css in.md -o out.html
+</code></pre><p>另外一种更加好的方式使用&ndash;self-contained参数:</p>
+<pre><code>pandoc -s --self-contained -c style.css in.md -o out.html
+</code></pre><p>这个命令不但会把css文件嵌入到html中，它会把所有外部文件全部压缩进单个html文件中，包括图片、视频、音乐等。利用上述这个命令，就能将markdown文档轻易地生成一个真正独立的html文件，不需要任何其他外部文件支持，这就非常方便传递了。</p>
+<p>此外，由于我要进行论文写作，需要引用参考文献。Pandoc 下的 pandoc-citeproc 可以完成这个功能，这里不再详细介绍这个，改天有时间专门写一个学习记录。最终我的 pandoc转换成 html 的命令如下：</p>
+<pre><code>pandoc -s -S --filter pandoc-citeproc --css=/Users/yuanbo/Documents/zotero_bib/sspai.com_Style.css --bibliography=/Users/yuanbo/Documents/zotero_bib/library.bib --csl=/Users/yuanbo/Documents/zotero/styles/my_apa_zh_en.csl /Users/yuanbo/Desktop/test2.md -o /Users/yuanbo/Desktop/test2.html
+</code></pre><h2 id="生成pdf">生成pdf</h2>
+<p>生成一个pdf文件也是pandoc的主要功能之一，但是它要依赖于latex，如果需要使用pandoc来生成pdf文件，那么需要另外安装Latex，pandoc官方推荐安装MiKTeX，具体安装过程也不说了，非常简单。安装好MikTex之后，可以利用如下的命令来生成pdf:</p>
+<pre><code>pandoc in.md -o out.pdf
+</code></pre><p>但是这样命令会出现这样的错误，原因是pandoc默认选择的pdf引擎是pdflatex，而pdflatex是不支持中文的。因此在使用pandoc的时候，可以手动指明Latex引擎为xelatex，这是完全支持中文显示的。这样我们的命令就变成了:</p>
+<pre><code>pandoc /Users/yuanbo/Desktop/test2.md --latex-engine=xelatex -o /Users/yuanbo/Desktop/test2.pdf
+</code></pre><p>使用这个命令能够正常的编译出pdf文件，但是当你打开编译出来的pdf文件时，会发现其中的中文部分全是空白，这是字体的问题，因为Latex的默认字体是不支持中文的，因此我们可以继续修改命令：</p>
+<pre><code>pandoc in.md -o out.pdf --latex-engine=xelatex -V mainfont=SimSun
+</code></pre><p>其中mainfont参数是用来指明所使用的字体，SimSun表示的是宋体，可以选择其他支持中文的字体。</p>
+<p>但是这个命令还是有问题的，打开生成的pdf，你会发现其中的中文完全是没有断行的，这是因为pandoc本身对中文支持不够，解决方案是使用网友编辑好的latex模板来生成pdf，这里用到的是tzengyuxio提供的<a href="https://github.com/tzengyuxio/pages/blob/gh-pages/pandoc/pm-template.latex">pm-template.latex</a>。 下载模板后将其中的LiHei Pro字体替换成系统中安装有的中文字体(eg. Microsoft YaHei)即可，然后编译命令改为：</p>
+<pre><code>pandoc in.md -o out.pdf --latex-engine=xelatex --template=pm-template.latex
+</code></pre><p>这时就能生成一个比较完美的pdf文件了。注意，如果用上面的命令依然出现出现错误，可能需要使用 tlmgr 工具安装依赖titling 和 lastpage，命令如下（详见<a href="http://liumh.com/2014/07/18/pandoc-convert-chinese-pdf/">这里</a>）：</p>
+<pre><code>sudo tlmgr install titling
+sudo tlmgr install lastpage
+</code></pre><h2 id="生成-worddocx文档">生成 word(.docx)文档</h2>
+<p>pandoc 还可以非常容易地生成 word 文档，只需要将输出文件的后缀名改为.docx 即可，比如使用如下命令：<code>pandoc in.md -o out.docx</code>。但是，生成word 文档不能指定样式，只能给 pandoc 提供一个 word 的 template，并且这个 template 也只能在一些简单的样式上起作用。我根据官网上提供的 template，修改了一份适合自己的 template，效果还算可以，但并不能像生成 html 或者 pdf 那样令人满意。所以，除非一定需要，尽量还是不要用 pandoc 生成 docx。制定 word template的命令如下：</p>
+<pre><code>pandoc -S --reference-docx twocolumns.docx -o UsersGuide.docx MANUAL.txt
+</code></pre><h2 id="生成-slides">生成 slides</h2>
+<p>pandoc强大的令人发指，处理生成 html、pdf、docx，它还可以生成 slides。生成 slides 可以分为 beamer 和 html slides 两种形式。如果想成beamer 可以使用下面的命令：<code>pandoc -t beamer SLIDES -o example8.pdf</code>。生成 html slides 可以有三种不同的样式(dzslides, slidy, revealjs)，分别可以使用下面的命令：</p>
+<pre><code>pandoc -s --mathml -i -t dzslides SLIDES -o example16a.html
+pandoc -s --webtex -i -t slidy SLIDES -o example16b.html
+pandoc -s --mathjax -i -t revealjs SLIDES -o example16d.html
+</code></pre><h1 id="sublime-text-与-pandoc">Sublime text 与 Pandoc</h1>
+<p>既然现在有了panodc这个神器，那么大部分的文本编辑操作我就可以在sublime text 中进行了，而不需要去使用无比臃肿的word了，配合sublime text 强大的功能，就能配置出一个功能完善的pandoc写作环境了。通过sublime text 的build直接生成不同的输出格式，此外sublime text 还有一个 pandoc 插件，简单配置下也可以非常方便地在sublime text 中将 markdown 文件生成各种文档。具体代码示例如下：</p>
+<h2 id="sublime-text-3--bulid-markdown--to-html">Sublime Text 3  bulid markdown  to html</h2>
+<pre><code>{
+	&quot;selector&quot;: &quot;text.html.markdown&quot;,
+
+	&quot;cmd&quot;: [ 
+		&quot;/usr/local/bin/pandoc&quot;,
+		&quot;-f&quot;, 
+ 		&quot;markdown&quot;, 
+ 		&quot;-t&quot;, 
+ 		&quot;html&quot;,
+ 		&quot;-s&quot;, 
+ 		&quot;--smart&quot;,
+ 		&quot;--normalize&quot;,
+ 		&quot;--css=/Users/yuanbo/Documents/zotero_bib/sspai.com Style.css&quot;,
+ 		&quot;--filter=/usr/local/bin/pandoc-citeproc&quot;,
+ 		&quot;--bibliography=/Users/yuanbo/Documents/zotero_bib/library.bib&quot;,
+ 		&quot;--csl=/Users/yuanbo/Documents/zotero/styles/american-psychological-association-6th-edition-no-dois.csl&quot;,
+ 		&quot;-o&quot;, 
+ 		&quot;/Users/yuanbo/Desktop/$file_base_name.html&quot;, 
+ 		&quot;$file&quot;,
+	]
+}
+
+</code></pre><h2 id="sublime-text-3--bulid-markdown--to-docx">Sublime Text 3  bulid markdown  to docx</h2>
+<pre><code>{
+	&quot;selector&quot;: &quot;text.html.markdown&quot;,
+
+	&quot;cmd&quot;: [ 
+		&quot;/usr/local/bin/pandoc&quot;,
+		&quot;-f&quot;, 
+ 		&quot;markdown&quot;, 
+ 		&quot;-t&quot;, 
+ 		&quot;docx&quot;,
+ 		&quot;-s&quot;, 
+ 		&quot;--smart&quot;,
+ 		&quot;--normalize&quot;,
+ 		&quot;--filter=/usr/local/bin/pandoc-citeproc&quot;,
+ 		&quot;--bibliography=/Users/yuanbo/Documents/zotero_bib/library.bib&quot;,
+ 		&quot;--csl=/Users/yuanbo/Documents/zotero/styles/american-psychological-association-6th-edition-no-dois.csl&quot;,
+ 		&quot;-o&quot;, 
+ 		&quot;/Users/yuanbo/Desktop/$file_base_name.docx&quot;, 
+ 		&quot;$file&quot;,
+	]
+}
+</code></pre><h2 id="sublime-text-3--bulid-markdown--to-pdf">Sublime Text 3  bulid markdown  to pdf</h2>
+<pre><code>
+{
+	&quot;selector&quot;: &quot;text.html.markdown&quot;,
+
+	&quot;cmd&quot;: [ 
+		&quot;/usr/local/bin/pandoc&quot;,
+		&quot;-f&quot;,
+ 		&quot;markdown&quot;, 
+ 		&quot;-t&quot;, 
+ 		&quot;latex&quot;, 
+	       &quot;--latex-engine=/Library/TeX/texbin/xelatex&quot;,
+	       &quot;--template=/Users/yuanbo/Documents/zotero_bib/mytemplate.tex&quot;,
+	       &quot;--filter=/usr/local/bin/pandoc-citeproc&quot;,
+ 		 &quot;--metadata=link-citations=true&quot;, 
+ 		 &quot;--metadata=colorlinks=true&quot;, 
+ 		 &quot;--bibliography=/Users/yuanbo/Documents/zotero_bib/library.bib&quot;,
+ 		 &quot;--csl=/Users/yuanbo/Documents/zotero/styles/my_pandoc_apa_zh_en.csl&quot;, 
+ 		 &quot;-o&quot;, 
+ 		&quot;/Users/yuanbo/Desktop/$file_base_name.pdf&quot;, 
+ 		&quot;$file&quot;,
+	]
+}
+
+</code></pre><p>sublime text 中的pandoc 插件配置基本上类似。</p>
+<h1 id="注意事项">注意事项</h1>
+<ul>
+<li>Pandoc不支持.doc格式，如果需要进行转换，则需要先将.doc转换为.docx。</li>
+<li>Pandoc citerpro 还有些功能不能实现。</li>
+</ul>
+<h1 id="pandoc常用命令">pandoc常用命令</h1>
+<p><code>pandoc-citeproc -h</code><br>
+<code>pandoc-citeproc --version</code></p>
+<h1 id="引用资源">引用资源</h1>
+<p>[文本转换神器——Pandoc] (<a href="https://xuanwo.org/2015/11/14/pandoc/">https://xuanwo.org/2015/11/14/pandoc/</a>)<br>
+[神器Pandoc的安装与使用] (<a href="http://zhouyichu.com/misc/Pandoc/">http://zhouyichu.com/misc/Pandoc/</a>)<br>
+[Pandoc中文pdf转换攻略] (<a href="https://afoo.me/posts/2013-07-10-how-to-transform-chinese-pdf-with-pandoc.html">https://afoo.me/posts/2013-07-10-how-to-transform-chinese-pdf-with-pandoc.html</a>)</p>
+
+
+

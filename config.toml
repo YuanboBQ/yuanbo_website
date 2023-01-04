@@ -1,0 +1,105 @@
+publishDir = "docs"
+baseurl = "https://yuanbo.netlify.app/"
+RelativeURLs = true
+CanonifyURLs = true
+languageCode = "zh-cmn-Hans"	                  # html的lang属性值
+#DefaultContentLanguage = "zh-cmn-Hans"   	  # 默认内容语言用于选择i18n语言模板
+title = "袁博 | 敢于求知"
+theme = "hugo-ivy"
+#googleAnalytics = "UA-112592341-1"
+#disqusShortname = "shen-bioinit"
+ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
+hasCJKLanguage = true                             # .WordCount works correctly for chinese
+enableEmoji = true
+footnotereturnlinkcontents = "↩"
+MetaDataFormat = "yaml" 			  # format of a new post
+enableGitInfo = false
+
+
+[params]
+    dateform   = "2006/01/02"
+    homepage   = "首页"                           # What to call the home page link
+    githubContentURL   = "https://github.com/YuanboBQ/SCMD-LAB_Read/edit/master/content/"
+    #siteurl = "https://shen.bioitee.com"
+    description = "Welcome to the blog site of Bo Yuan."
+    footer = "&copy; [Bo Yuan](/) 2013 - 2021"
+    disqusURL = "https://shenweiyan.github.io/shen.bioitee.com/"
+    customJS = ["js/fix-toc.js", "js/center-img.js", "js/right-quote.js", "js/no-highlight.js", "js/fix-footnote.js", "js/math-code.js", "js/external-link.js", "js/alt-title.js", "js/header-link.js", "js/dom-scripts.js"]
+    
+    # options for highlight.js (version, additional languages, and theme)
+    highlightjsVersion = "9.12.0"
+    highlightjsLang = ["r", "yaml", "tex"]
+    highlightjsCDN = "//cdn.bootcss.com"
+    highlightjsTheme = "github"
+    dateFormat = "2019-01-01" # "2019-01-01, Mon, "
+
+
+[[menu.main]]
+    name = "首页"
+    url = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "关于"
+    url = "/about/"
+    weight = 2
+
+[[menu.main]]
+    name = "简历"
+    url = "/resume/"
+    weight = 3
+
+[[menu.main]]
+    name = "日志"
+    url = "/post/"
+    weight = 4
+
+[[menu.main]]
+    name = "资源"
+    url = "/resources/"
+    weight = 5
+
+[[menu.main]]
+    name = "链接"
+    url = "/links/"
+    weight = 6
+
+[[menu.main]]
+    name = "Slides"
+    url = "/slides/"
+    weight = 7
+
+
+
+[params.author]
+    en = "Bo Yuan"
+    cn = "袁博"
+
+[params.logo.cn]
+    img = "https://apps-db.oss-cn-shenzhen.aliyuncs.com/logos/shenweiyan.png" #"/images/logo.png"
+    url = "/"
+    alt = "Bo Yuan"
+    tag = ""
+
+[params.logo.en]
+    img = "https://apps-db.oss-cn-shenzhen.aliyuncs.com/logos/shenweiyan.png"
+    url = "/"
+    alt = "Bo Yuan"
+    tag = ""
+
+[params.lang.edit]
+    cn = "编辑"
+
+[params.lang.subscribe]
+    cn = "订阅"
+
+[params.utteranc]
+enable = true              
+repo = "shenweiyan/issues"    # 存储评论的Repo，格式为 owner/repo
+issueTerm = "title"          # 表示你选择以那种方式让github issue的评论和你的文章关联可以选择默认的 pathname。
+theme = "github-light"        # 样式主题
+
+[taxonomies]
+    tag = "topic/tags"
+    series = "topic/series"
+    category = "topic/categories"

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>R软件中的缺失值处理 - 袁博 | 敢于求知</title>
+    <meta property="og:title" content="R软件中的缺失值处理 - 袁博 | 敢于求知">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="最近处理数据时，碰到缺失值问题，总结了下在 R 中如何处理缺失值。
+[&amp;hellip;] NA表示数据集中的该数据遗失、不存在。在针对具有NA的数据集进行函数操作的时候，该NA不会被直接剔除。如x&amp;lt;-c(1,2,3,NA,4)，取mean(x)，则结果为NA，如果想去除NA的影响，需要显式告知mean方法，如 mean(x, na.rm=T)；NA是没有自己的mode的，在vector中，它 &amp;hellip;">
+      <meta property="og:description" content="最近处理数据时，碰到缺失值问题，总结了下在 R 中如何处理缺失值。
+[&amp;hellip;] NA表示数据集中的该数据遗失、不存在。在针对具有NA的数据集进行函数操作的时候，该NA不会被直接剔除。如x&amp;lt;-c(1,2,3,NA,4)，取mean(x)，则结果为NA，如果想去除NA的影响，需要显式告知mean方法，如 mean(x, na.rm=T)；NA是没有自己的mode的，在vector中，它 &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/fonts.css" />
+    
+<link rel="stylesheet" href="../../css/custom.css" />
+
+  </head>
+
+  
+  <body class="post">
+    <header class="masthead">
+      
+
+<h1><a href="../../"><img src="https://apps-db.oss-cn-shenzhen.aliyuncs.com/logos/shenweiyan.png" alt="Bo Yuan" /></a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" />
+  <label id="menu-label" for="menu-check" class="unselectable">
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="../../">首页</a></li>
+  
+  <li><a href="../../about/">关于</a></li>
+  
+  <li><a href="../../resume/">简历</a></li>
+  
+  <li><a href="../../post/">日志</a></li>
+  
+  <li><a href="../../resources/">资源</a></li>
+  
+  <li><a href="../../links/">链接</a></li>
+  
+  <li><a href="../../slides/">Slides</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+  
+
+
+
+<h1>R软件中的缺失值处理</h1>
+
+
+
+
+
+
+<h3>yuanbo &middot 
+2017-05-02</h3> 
+
+
+   
+  
+
+
+
+      </header>
+
+
+  
+  
+  
+
+  
+  
+  
+
+  <p>最近处理数据时，碰到缺失值问题，总结了下在 R 中如何处理缺失值。</p>
+<h2 id="一什么是缺失值na与null的区别">一、什么是缺失值，NA与NULL的区别</h2>
+<ol>
+<li>
+<p>NA表示数据集中的该数据遗失、不存在。在针对具有NA的数据集进行函数操作的时候，该NA不会被直接剔除。如x&lt;-c(1,2,3,NA,4)，取mean(x)，则结果为NA，如果想去除NA的影响，需要显式告知mean方法，如 <code>mean(x, na.rm=T)</code>；NA是没有自己的mode的，在vector中，它会“追随”其他数据的类型，比如刚刚的x，mode(x)为numeric，mode(x[4])亦然</p>
+</li>
+<li>
+<p>NULL表示未知的状态。它不会在计算之中，如x&lt;-c(1,2,3,NULL,4)，取mean(x)，结果为2.5。NULL是不算数的，length(c(NULL))为0，而length(c(NA))为1。可见NA“占着”位置，它存在着，而NULL没有“占着”位置，或者说，“不知道”有没有真正的数据。</p>
+</li>
+</ol>
+<h2 id="二识别缺失值na">二、识别缺失值NA</h2>
+<p>在R语言中缺失值通常以NA表示，判断是否缺失值的函数是is.na。
+另一个常用到的函数是complete.cases，它对数据框进行分析，判断某一观测样本是否完整。
+下面我们读取VIM包中的sleep数据作为例子，它的样本数为62，变量数为10，由complete.cases函数计算可知完整的样本个数为42。</p>
+<pre><code>data(sleep, package=&quot;VIM&quot;)
+dim(sleep)
+sum(complete.cases(sleep))
+#可以使用vim包的aggr函数以图形方式描述缺失数据
+aggr(sleep)
+
+</code></pre><p>上面的左图显示各变量缺失数据比例，右图显示了各种缺失模式和对应的样本数目，显示nond和dream经常同时出现缺失值。</p>
+<h2 id="三识别缺失数据的模式">三、识别缺失数据的模式</h2>
+<p>存在缺失数据情况下，需进一步判断缺失数据的模式是否随机。在R中是利用mice包中的md.pattern函数。</p>
+<pre><code>library(mice)
+md.pattern(sleep)
+</code></pre><p>上表中的1表示没有缺失数据，0表示存在缺失数据。第一列第一行的42表示有42个样本是完整的，第一列最后一行的1表示有一个样本缺少了span、dream、nond三个变量，最后一行表示各个变量缺失的样本数合计。</p>
+<h2 id="四处理缺失数据">四、处理缺失数据</h2>
+<p>对于缺失数据通常有两种常用的方法：</p>
+<ol>
+<li>
+<p>当缺失数据较少时直接删除相应样本 <br>
+删除缺失数据样本，其前提是缺失数据的比例较少，而且缺失数据是随机出现的，这样删除缺失数据后对分析结果影响不大。</p>
+</li>
+<li>
+<p>对缺失数据进行插补 <br>
+用变量均值或中位数来代替缺失值，其优点在于不会减少样本信息，处理简单。但是缺点在于当缺失数据不是随机出现时会产成偏误。
+多重插补法（Multiple imputation）：多重插补是通过变量间关系来预测缺失数据，利用蒙特卡罗方法生成多个完整数据集，再对这些数据集分别进行分析，最后对这些分析结果进行汇总处理。可以用mice包实现。</p>
+</li>
+</ol>
+<h2 id="具体案例">具体案例</h2>
+<p>[参考文章] (<a href="https://www.douban.com/note/430136070/">https://www.douban.com/note/430136070/</a>)</p>
+
+
+

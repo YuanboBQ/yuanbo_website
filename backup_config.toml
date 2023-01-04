@@ -1,0 +1,43 @@
+
+publishDir = "docs"
+baseurl        = "https://scmd-group.netlify.app"           # Your domain name
+title          = "敢于求知"
+theme          = "sam" #"sam"
+hasCJKLanguage = true  # .WordCount works correctly for chinese
+disablePathToLower = true
+
+[params]
+    dateform   = "2006/01/02"
+    homepage   = "首页"                           # What to call the home page link
+    githubContentURL   = "https://github.com/YuanboBQ/SCMD-LAB_Read/edit/master/content/"
+
+[[params.mainMenu]]
+    link = "about"
+    text = "愿景"
+
+[[params.mainMenu]]
+    link = "/resume/"
+    text = "简历"
+
+[[params.mainMenu]]
+    link = "/post/"
+    text = "日志"
+
+[[params.mainMenu]]
+    link = "/resources/"
+    text = "资源"
+
+[[params.mainMenu]]
+    link = "/slides/"
+    text = "Talk"
+
+[[params.mainMenu]]
+    link = "/links/"
+    text = "链接"
+
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 4
+    ordered = false
+    startLevel = 1

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Mac OS下在Dropbox中建立软连接 - 袁博 | 敢于求知</title>
+    <meta property="og:title" content="Mac OS下在Dropbox中建立软连接 - 袁博 | 敢于求知">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="需要同步到Dropbox的内容都得放置在一个文件夹里面，默认名字叫&amp;quot;Dropbox&amp;quot;。
+[&amp;hellip;] 实际情况是：许多文档，代码等已经放置在其他相关的文件夹里面了。如果搬到&amp;quot;Dropbox&amp;quot;文件夹中，会给管理带来麻烦。如果不搬到“Dropbox”中，怎么样让Dropbox也能够自动的及时更新这些备份呢？
+[&amp;hellip;] 要用到软连接： ln &amp;hellip;">
+      <meta property="og:description" content="需要同步到Dropbox的内容都得放置在一个文件夹里面，默认名字叫&amp;quot;Dropbox&amp;quot;。
+[&amp;hellip;] 实际情况是：许多文档，代码等已经放置在其他相关的文件夹里面了。如果搬到&amp;quot;Dropbox&amp;quot;文件夹中，会给管理带来麻烦。如果不搬到“Dropbox”中，怎么样让Dropbox也能够自动的及时更新这些备份呢？
+[&amp;hellip;] 要用到软连接： ln &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/fonts.css" />
+    
+<link rel="stylesheet" href="../../css/custom.css" />
+
+  </head>
+
+  
+  <body class="post">
+    <header class="masthead">
+      
+
+<h1><a href="../../"><img src="https://apps-db.oss-cn-shenzhen.aliyuncs.com/logos/shenweiyan.png" alt="Bo Yuan" /></a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" />
+  <label id="menu-label" for="menu-check" class="unselectable">
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="../../">首页</a></li>
+  
+  <li><a href="../../about/">关于</a></li>
+  
+  <li><a href="../../resume/">简历</a></li>
+  
+  <li><a href="../../post/">日志</a></li>
+  
+  <li><a href="../../resources/">资源</a></li>
+  
+  <li><a href="../../links/">链接</a></li>
+  
+  <li><a href="../../slides/">Slides</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+  
+
+
+
+<h1>Mac OS下在Dropbox中建立软连接</h1>
+
+
+
+
+
+
+<h3>yuanbo &middot 
+2017-04-11</h3> 
+
+
+   
+  
+
+
+
+      </header>
+
+
+  
+  
+  
+
+  
+  
+  
+
+  <h2 id="背景">背景</h2>
+<p>需要同步到Dropbox的内容都得放置在一个文件夹里面，默认名字叫&quot;Dropbox&quot;。</p>
+<h2 id="问题">问题</h2>
+<p>实际情况是：许多文档，代码等已经放置在其他相关的文件夹里面了。如果搬到&quot;Dropbox&quot;文件夹中，会给管理带来麻烦。如果不搬到“Dropbox”中，怎么样让Dropbox也能够自动的及时更新这些备份呢？</p>
+<h2 id="解决">解决：</h2>
+<p>要用到软连接： ln -s 实际所在的路径及名字     <strong>希望所在的路径及名字</strong> 。具体命令如下（需要把 xxx替换成自己的用户名）：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ln -s /Users/yuanbo/Work<span style="color:#ae81ff">\ </span>and<span style="color:#ae81ff">\ </span>Study/R_learning/R<span style="color:#ae81ff">\ </span>Working<span style="color:#ae81ff">\ </span>Directory/yuan_blogdown/mywebsite/docs /Users/yuanbo/Dropbox/应用/updog/yuanbo
+</code></pre></div>
+
+

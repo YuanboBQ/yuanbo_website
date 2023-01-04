@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>如何在python中draw samples - 袁博 | 敢于求知</title>
+    <meta property="og:title" content="如何在python中draw samples - 袁博 | 敢于求知">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="https://stackoverflow.com/questions/10803135/weighted-choice-short-and-simple/15907274
+[Youtube videos &amp;hellip;">
+      <meta property="og:description" content="https://stackoverflow.com/questions/10803135/weighted-choice-short-and-simple/15907274
+[Youtube videos &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/fonts.css" />
+    
+<link rel="stylesheet" href="../../css/custom.css" />
+
+  </head>
+
+  
+  <body class="post">
+    <header class="masthead">
+      
+
+<h1><a href="../../"><img src="https://apps-db.oss-cn-shenzhen.aliyuncs.com/logos/shenweiyan.png" alt="Bo Yuan" /></a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" />
+  <label id="menu-label" for="menu-check" class="unselectable">
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="../../">首页</a></li>
+  
+  <li><a href="../../about/">关于</a></li>
+  
+  <li><a href="../../resume/">简历</a></li>
+  
+  <li><a href="../../post/">日志</a></li>
+  
+  <li><a href="../../resources/">资源</a></li>
+  
+  <li><a href="../../links/">链接</a></li>
+  
+  <li><a href="../../slides/">Slides</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+  
+
+
+
+<h1>如何在python中draw samples</h1>
+
+
+
+
+
+
+<h3>yuanbo &middot 
+2020-10-25</h3> 
+
+
+   
+  
+
+
+
+      </header>
+
+
+  
+  
+  
+
+  
+  
+  
+
+  <h1 id="如何在python中draw-samples">如何在python中draw samples</h1>
+<p><a href="https://stackoverflow.com/questions/10803135/weighted-choice-short-and-simple/15907274">https://stackoverflow.com/questions/10803135/weighted-choice-short-and-simple/15907274</a></p>
+<p>[Youtube videos tutorial]https://www.youtube.com/watch?v=KzqSDvzOFNA&amp;pbjreload=101&amp;ab_channel=CoreySchafer</p>
+<p>Since Python 3.6 there is a method <a href="https://docs.python.org/dev/library/random.html#random.choices"><code>choices</code></a> from the <a href="https://docs.python.org/dev/library/random.html#module-random"><code>random</code></a> module.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> random
+random<span style="color:#f92672">.</span>choices(population <span style="color:#f92672">=</span> [[<span style="color:#e6db74">&#39;a&#39;</span>,<span style="color:#e6db74">&#39;b&#39;</span>], [<span style="color:#e6db74">&#39;b&#39;</span>,<span style="color:#e6db74">&#39;a&#39;</span>], [<span style="color:#e6db74">&#39;c&#39;</span>,<span style="color:#e6db74">&#39;b&#39;</span>]],
+               weights <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0.2</span>, <span style="color:#ae81ff">0.2</span>, <span style="color:#ae81ff">0.6</span>],
+               k <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> random
+random<span style="color:#f92672">.</span>choices([<span style="color:#e6db74">&#39;one&#39;</span>, <span style="color:#e6db74">&#39;two&#39;</span>, <span style="color:#e6db74">&#39;three&#39;</span>], [<span style="color:#ae81ff">0.2</span>, <span style="color:#ae81ff">0.3</span>, <span style="color:#ae81ff">0.5</span>], k<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>)
+</code></pre></div><p>也可以用numpy模块</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">numpy<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>choice(items, trials, p <span style="color:#f92672">=</span> probs)
+</code></pre></div><p>Since <a href="https://stackoverflow.com/questions/tagged/numpy">numpy</a> version 1.7 you can use <a href="http://docs.scipy.org/doc/numpy-1.7.0/reference/generated/numpy.random.choice.html"><code>numpy.random.choice()</code></a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">elements <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;one&#39;</span>, <span style="color:#e6db74">&#39;two&#39;</span>, <span style="color:#e6db74">&#39;three&#39;</span>] 
+weights <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0.2</span>, <span style="color:#ae81ff">0.3</span>, <span style="color:#ae81ff">0.5</span>]
+
+<span style="color:#f92672">from</span> numpy.random <span style="color:#f92672">import</span> choice
+<span style="color:#66d9ef">print</span>(choice(elements, p <span style="color:#f92672">=</span> weights))
+</code></pre></div><p>通过这个语句可以按照一定的概率选取一个或几个元素，用来控制强化学习任务中的输钱和赢钱的</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">random<span style="color:#f92672">.</span>choices(population <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;H&#39;</span>, <span style="color:#e6db74">&#39;T&#39;</span>], weights <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0.3</span>, <span style="color:#ae81ff">0.7</span>], k <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+</code></pre></div><p>Note that <code>random.choices</code> will sample <em>with replacement</em>, per the <a href="https://docs.python.org/dev/library/random.html#random.choices">docs</a>:</p>
+<p><a href="https://pynative.com/python-random-choice/">https://pynative.com/python-random-choice/</a></p>
+<p>Use random.choice() to Randomly select an item from a list</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> random
+movie_list <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;The Godfather&#39;</span>, <span style="color:#e6db74">&#39;The Wizard of Oz&#39;</span>, <span style="color:#e6db74">&#39;Citizen Kane&#39;</span>, <span style="color:#e6db74">&#39;The Shawshank Redemption&#39;</span>, <span style="color:#e6db74">&#39;Pulp Fiction&#39;</span>]
+
+moview_item <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>choice(movie_list)
+<span style="color:#66d9ef">print</span> (<span style="color:#e6db74">&#34;Randomly selected item from list is - &#34;</span>, moview_item)
+</code></pre></div><p><a href="https://pynative.com/python-weighted-random-choices-with-probability/">https://pynative.com/python-weighted-random-choices-with-probability/</a></p>
+<p><strong>random.choices()</strong></p>
+<p>Python 3.6 introduced a new function <a href="https://docs.python.org/3/library/random.html#random.choices">choices()</a> in the <a href="https://pynative.com/python-random-module/">random module</a>. By using <code>random.choices()</code> we can make a weighted random choice with replacement. You can also call it a weighted <a href="https://pynative.com/python-random-sample/">random sample</a> with replacement. Let’s have a look into the syntax of this function.</p>
+
+
+

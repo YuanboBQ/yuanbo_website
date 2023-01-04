@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Psychopy 中常用的一些script - 袁博 | 敢于求知</title>
+    <meta property="og:title" content="Psychopy 中常用的一些script - 袁博 | 敢于求知">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="real_exp_feedback=u&amp;quot;本轮中你选择了$f_num 次&amp;rsquo;f&amp;rsquo;键，$j_num 次‘j’键，本轮你得到$f_num0.1元&#43;$j_num0.01元。 \n\n按空格键继续实验！&amp;quot;
+practice_total = f_num0.1 &#43; j_num0.01 practice_feedback = u&amp;quot;你选择了 %.0f 次F &amp;hellip;">
+      <meta property="og:description" content="real_exp_feedback=u&amp;quot;本轮中你选择了$f_num 次&amp;rsquo;f&amp;rsquo;键，$j_num 次‘j’键，本轮你得到$f_num0.1元&#43;$j_num0.01元。 \n\n按空格键继续实验！&amp;quot;
+practice_total = f_num0.1 &#43; j_num0.01 practice_feedback = u&amp;quot;你选择了 %.0f 次F &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/fonts.css" />
+    
+<link rel="stylesheet" href="../../css/custom.css" />
+
+  </head>
+
+  
+  <body class="post">
+    <header class="masthead">
+      
+
+<h1><a href="../../"><img src="https://apps-db.oss-cn-shenzhen.aliyuncs.com/logos/shenweiyan.png" alt="Bo Yuan" /></a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" />
+  <label id="menu-label" for="menu-check" class="unselectable">
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="../../">首页</a></li>
+  
+  <li><a href="../../about/">关于</a></li>
+  
+  <li><a href="../../resume/">简历</a></li>
+  
+  <li><a href="../../post/">日志</a></li>
+  
+  <li><a href="../../resources/">资源</a></li>
+  
+  <li><a href="../../links/">链接</a></li>
+  
+  <li><a href="../../slides/">Slides</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+  
+
+
+
+<h1>Psychopy 中常用的一些script</h1>
+
+
+
+
+
+
+<h3>yuanbo &middot 
+2017-06-13</h3> 
+
+
+   
+  
+
+
+
+      </header>
+
+
+  
+  
+  
+
+  
+  
+  
+
+  <h1 id="heading"></h1>
+<p>real_exp_feedback=u&quot;本轮中你选择了$f_num 次&rsquo;f&rsquo;键，$j_num 次‘j’键，本轮你得到$f_num<em>0.1元+$j_num</em>0.01元。 \n\n按空格键继续实验！&quot;</p>
+<p>practice_total = f_num<em>0.1 + j_num</em>0.01
+practice_feedback = u&quot;你选择了 %.0f 次F键，&quot; %f_num  + u&quot;选择了 %.0f 次J键。&quot; %j_num + u&quot;\n\n你共得到 %.0f *0.1元 +&quot; %f_num + u&quot; %.0f *0.01元,&quot; %j_num + u&quot;共计 %.2f 元&quot; % practice_total + u&quot;\n\n按空格键继续实验。&quot;</p>
+<h1 id="根据正确错误给予反馈">根据正确错误给予反馈</h1>
+<pre><code>feedbackText=&quot;&quot;
+
+if popped==True:
+  feedbackText=&quot;Oops! Lost that one!&quot;
+  bang.play()
+else:
+  feedbackText=u&quot;You banked £%.2f&quot; %lastBalloonEarnings
+  
+</code></pre><h1 id="msg-variable-just-needs-some-value-at-start">msg variable just needs some value at start</h1>
+<p>msg=''</p>
+<p>if resp.corr:#stored on last run routine
+msg=&ldquo;Correct! RT=%.3f&rdquo; %(resp.rt)
+else:
+msg=&ldquo;Oops! That was wrong&rdquo;</p>
+<h1 id="图形显示被试的数据结果">图形显示被试的数据结果</h1>
+<p>from matplotlib import pyplot
+import pandas as pd</p>
+<p>def plotYX(yaxis, xaxis, description=''):
+pyplot.grid(True)
+pyplot.title(description)
+pyplot.xlabel(&lsquo;Angle&rsquo;)
+pyplot.ylabel(&lsquo;Response time (s)')
+pyplot.xlim([0, 315])
+#slope,inter = np.polyfit(xaxis[:5],yaxis[:5],1)
+pyplot.plot(xaxis, yaxis) #, xaxis[:5], np.array(xaxis[:5]) * slope + inter)
+pyplot.draw()
+pyplot.show()</p>
+<p>filename = &lsquo;mental_rotation_data.csv&rsquo;
+with open(filename, &lsquo;wb&rsquo;) as fd:
+fd.write(data_string)</p>
+<p>data = pd.read_csv(filename)
+data = data[data[&lsquo;rt&rsquo;] &lt; 4]  # trim RT at 4 sec
+mrt = data.loc[:,&lsquo;rt&rsquo;]
+correct = data.loc[:, &lsquo;corr&rsquo;]
+angle = data.loc[:, &lsquo;angle&rsquo;]</p>
+<p>dfsum = data.groupby(&lsquo;angle&rsquo;, as_index=False).mean()
+m = dfsum.loc[:, &lsquo;rt&rsquo;]
+a = dfsum.loc[:, &lsquo;angle&rsquo;]</p>
+<p>scored_data = zip(a, m)
+print &lsquo;average time (sec) at each rotation:&rsquo;
+print &quot;  0  45  90  135 180 225 270 315&quot;
+print &ldquo;&ndash;&gt; %s &lt;&ndash;&rdquo; % repr([round(i,3) for i in m]).strip('[]').replace(&rsquo;,', '  &lsquo;)
+print &ldquo;\n% correct        :&rdquo;, 100 * correct.mean()
+print &ldquo;overall speed (s):&rdquo;, mrt.mean()</p>
+<p>plotYX(m, a)</p>
+<p>with open(filename, &lsquo;a+b&rsquo;) as fd:
+fd.write('\n\n&rsquo; + repr(scored_data))</p>
+
+
+

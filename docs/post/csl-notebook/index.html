@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Citation Style Language (CSL)学习笔记 - 袁博 | 敢于求知</title>
+    <meta property="og:title" content="Citation Style Language (CSL)学习笔记 - 袁博 | 敢于求知">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="最近，试着在 markdown 中进行论文写作，发现可以用 pandoc 进行文献插入工作，而 pandoc(包括 Zotero)进行参考文献的引文样式管理采用的是 csl 引文样式（相当于Endnote采用*.ens样式），因此需要对CSL有一些了解，能够根据期刊的需要自行定义引文及参考书目的样式。
+引文样式语言（Citation Style Language ，简称CSL）是一种XML格式的， &amp;hellip;">
+      <meta property="og:description" content="最近，试着在 markdown 中进行论文写作，发现可以用 pandoc 进行文献插入工作，而 pandoc(包括 Zotero)进行参考文献的引文样式管理采用的是 csl 引文样式（相当于Endnote采用*.ens样式），因此需要对CSL有一些了解，能够根据期刊的需要自行定义引文及参考书目的样式。
+引文样式语言（Citation Style Language ，简称CSL）是一种XML格式的， &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/fonts.css" />
+    
+<link rel="stylesheet" href="../../css/custom.css" />
+
+  </head>
+
+  
+  <body class="post">
+    <header class="masthead">
+      
+
+<h1><a href="../../"><img src="https://apps-db.oss-cn-shenzhen.aliyuncs.com/logos/shenweiyan.png" alt="Bo Yuan" /></a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" />
+  <label id="menu-label" for="menu-check" class="unselectable">
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="../../">首页</a></li>
+  
+  <li><a href="../../about/">关于</a></li>
+  
+  <li><a href="../../resume/">简历</a></li>
+  
+  <li><a href="../../post/">日志</a></li>
+  
+  <li><a href="../../resources/">资源</a></li>
+  
+  <li><a href="../../links/">链接</a></li>
+  
+  <li><a href="../../slides/">Slides</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+  
+
+
+
+<h1>Citation Style Language (CSL)学习笔记</h1>
+
+
+
+
+
+
+<h3>yuanbo &middot 
+2017-08-05</h3> 
+
+
+   
+  
+
+
+
+      </header>
+
+
+  
+  
+  
+
+  
+  
+  
+
+  <p>最近，试着在 markdown 中进行论文写作，发现可以用 pandoc 进行文献插入工作，而 pandoc(包括 Zotero)进行参考文献的引文样式管理采用的是 csl 引文样式（相当于Endnote采用*.ens样式），因此需要对CSL有一些了解，能够根据期刊的需要自行定义引文及参考书目的样式。</p>
+<p>引文样式语言（Citation Style Language ，简称CSL）是一种XML格式的，用于规范行文中的引用、注释及参考书目的格式化语言。</p>
+<h2 id="csl-style-structure">CSL Style Structure</h2>
+<p>所有独立的CSL样式都具有相同的基本结构，它们的cs:style中有5种可能的子元素，每个子元素的作用叙述如下：</p>
+<pre><code>cs:info
+该子元素必须作为 cs:style的首个子元素。它包含了描述样式的元数据（样式的名称，样式的唯一的识别码以及样式的作者等）
+cs:citation
+该元素也是必须的，用来描述文内引用或注释的格式化结构
+cs:bibliography (可选)
+该元素为可选，用以描述参考书目的格式化结构
+cs:macro (宏，可选)
+样式可以包含一个或多个cs:macro元素。宏允许重复使用格式化命令，因此有利于保持样式的简洁及易于维护。
+cs:locale (区域，可选)
+样式可以包含一个或多个 cs:locale 元素。这些元素允许样式基于不同的区域，对默认的区域化数据（术语，日期格式，格式化选项）进行重写。通过 locale 可以实现多语言（比如中英文）混合的参考文献插入和样式管理。
+
+</code></pre><p>后面更详细地介绍上面几个元素。</p>
+<h3 id="info">info</h3>
+<p>cs:info 元素包含了样式的所有元数据，它的许多元素借鉴了。虽然它对引用如何格式化没有影响，不过对于要在公共空间传播的样式，完整且准确的元数据无疑非常重要。下面是 cs:info元素的一个例子，再往上是对所有可能包含的元素进行详解。</p>
+<pre><code>&lt;info&gt;
+ &lt;title&gt;Style Title&lt;/title&gt;
+ &lt;id&gt;http://www.zotero.org/styles/style-title&lt;/id&gt;
+ &lt;link href=&quot;http://www.zotero.org/styles/style-title&quot; rel=&quot;self&quot;/&gt;
+ &lt;author&gt;
+  &lt;name&gt;Author Name&lt;/name&gt;
+  &lt;email&gt;name@domain.com&lt;/email&gt;
+  &lt;uri&gt;http://www.domain.com/name&lt;/uri&gt;
+ &lt;/author&gt;
+ &lt;category citation-format=&quot;author-date&quot;/&gt;
+ &lt;category field=&quot;zoology&quot;/&gt;
+ &lt;updated&gt;2008-10-29T21:01:24+00:00&lt;/updated&gt;
+ &lt;summary&gt;Style for Some Journal&lt;/summary&gt;
+ &lt;rights&gt;This work is licensed under a Creative Commons
+         Attribution-Share Alike 3.0 Unported License
+         http://creativecommons.org/licenses/by-sa/3.0/&lt;/rights&gt;
+&lt;/info&gt;
+</code></pre><h3 id="citation">citation</h3>
+<p>主要是用来规范参考文献在正文中的样式。</p>
+<pre><code>  &lt;citation&gt;
+    &lt;option name=&quot;collapse&quot; value=&quot;citation-number&quot;/&gt;
+    &lt;sort&gt;
+      &lt;key variable=&quot;citation-number&quot;/&gt;
+    &lt;/sort&gt;
+    &lt;layout prefix=&quot;(&quot; suffix=&quot;)&quot; delimiter=&quot;; &quot;&gt;
+      &lt;text variable=&quot;citation-number&quot;/&gt;
+    &lt;/layout&gt;
+  &lt;/citation&gt;
+</code></pre><h3 id="bibliography">bibliography</h3>
+<p>主要是用来规范文后的参考文献目录。</p>
+<pre><code>&lt;bibliography&gt;
+    &lt;option name=&quot;second-field-align&quot; value=&quot;true&quot;/&gt;
+    &lt;layout&gt;
+      &lt;text variable=&quot;citation-number&quot; suffix=&quot;. &quot;/&gt;
+      &lt;text macro=&quot;author&quot;/&gt;
+      &lt;text macro=&quot;title&quot; suffix=&quot;. &quot;/&gt;
+      &lt;choose&gt;
+	&lt;if type=&quot;book&quot;&gt;
+	  &lt;text macro=&quot;edition&quot; prefix=&quot; &quot; suffix=&quot; &quot;/&gt;
+	  &lt;text macro=&quot;publisher&quot; prefix=&quot; &quot; suffix=&quot;.&quot;/&gt;
+	&lt;/if&gt;
+	&lt;else-if type=&quot;chapter&quot;&gt;
+	  &lt;group prefix=&quot; &quot; suffix=&quot;. &quot;&gt;
+	    &lt;text term=&quot;in&quot; suffix=&quot;: &quot; text-case=&quot;capitalize-first&quot;/&gt;
+	    &lt;text macro=&quot;editor&quot;/&gt;
+	    &lt;text variable=&quot;container-title&quot;/&gt;
+	  &lt;/group&gt;
+	  &lt;text macro=&quot;publisher&quot; prefix=&quot; &quot;/&gt;
+	  &lt;text variable=&quot;page&quot; prefix=&quot; p. &quot; suffix=&quot;.&quot;/&gt;
+	&lt;/else-if&gt;
+	&lt;else&gt;
+	  &lt;text variable=&quot;container-title&quot; suffix=&quot; &quot; form=&quot;short&quot;/&gt;
+	  &lt;text macro=&quot;date&quot; suffix=&quot;;&quot;/&gt;
+	  &lt;text variable=&quot;volume&quot;/&gt;
+	  &lt;text variable=&quot;issue&quot; prefix=&quot;(&quot; suffix=&quot;)&quot;/&gt;
+	  &lt;text variable=&quot;page&quot; prefix=&quot;:&quot; suffix=&quot;.&quot;/&gt;
+	&lt;/else&gt;
+      &lt;/choose&gt;
+
+          &lt;/layout&gt;  
+&lt;/bibliography&gt;
+</code></pre><p>引文格式的差异通常会很小，你可以找一个类似的格式，只需要做些许改动，就可以得到你想要的格式。 一般情况下，你只需要改动参考文献目录中的标点符号，各个项目（作者，题目，年份等）的位置就可以了。</p>
+<p>在 Zotero 中，分别以prefix, suffix 和 (group) delimiter属性来标识。例如，下列改动将会将卷号由格式(9)变动为[9]。</p>
+<p>可以将<code>&lt;text variable=&quot;issue&quot; prefix=&quot;(&quot; suffix=&quot;)&quot;/&gt;</code> 改为 <code>&lt;text variable=&quot;issue&quot; prefix=&quot;[&quot; suffix=&quot;]&quot;/&gt;</code>。</p>
+<p>当一篇引文的作者有多个的时候，常常需要显示 et al. 的缩写，这需要一个option参数。这个设置在CSL 0.8.1 和 1.0 中有所不同。</p>
+<p>In CSL 1.0, the same options - and several new ones - exist, but they are not listed separately, but included in the <!-- raw HTML omitted --> and <!-- raw HTML omitted --> lines, e.g.</p>
+<pre><code>&lt;citation et-al-min=&quot;4&quot; et-al-use-first=&quot;1&quot; disambiguate-add-year-suffix=&quot;true&quot; disambiguate-add-names=&quot;true&quot;&gt;
+</code></pre><h2 id="中文混排">中文混排</h2>
+<p>在Zotero首选项-引用-样式中已经预装了很多样式，导出参考文献时在word-zotero-document preference中也可以设置导出参考文献的格式。
+另外在 <a href="http://editor.citationstyles.org/about/">http://editor.citationstyles.org/about/</a> 可以下载需要的样式，网站提供了search by name, search by example, visual editor和code editor等功能，可以方便搜索样式和修改样式。</p>
+<p>写中文论文时，不可避免地会涉及到中文参考文献混排的问题，之前在 endnote 中很难完美的解决这个问题。但是现在在 Zotero 中可以解决这个问题了。能够实现中英文参考文献混排，得归功于CSL-M格式中可以指定的<!-- raw HTML omitted -->与其locale属性。原本在CSL 1.0.1语言标准中并没有详细介绍<!-- raw HTML omitted -->，是CSL-M扩充了CSL 1.0.1之后才有这<!-- raw HTML omitted -->等功能，而Zotero使用的是CSL-M。<!-- raw HTML omitted -->是使用于设定文中引用的<!-- raw HTML omitted -->与文后参考文献的<!-- raw HTML omitted -->所使用的标签。<!-- raw HTML omitted -->里面可以设定locale属性，例如&lt;layout locale=”zh- cn”&gt;。locale属性会参考书目本身的“语言”(language)栏位。我参考了这个 <a href="http://blog.pulipuli.info/2014/08/zoteroapa-zotero-citation-style-apa.html">blog</a>，并在作者提供的一份 <a href="https://raw.githubusercontent.com/pulipulichen/blogger/master/project/zotero/apa_zh_pulipuli.csl">csl 样式</a>上进行了修改，目前可以解决中文混排的问题。</p>
+<p>修改 csl 涉及的主要的 code 如下：</p>
+<pre><code>&lt;bibliography hanging-indent=&quot;true&quot;      
+              et-al-min=&quot;8&quot;       
+              et-al-use-first=&quot;6&quot;       
+              et-al-use-last=&quot;true&quot;       
+              entry-spacing=&quot;0&quot;       
+              line-spacing=&quot;1.5&quot;&gt;       
+  &lt;sort&gt;       
+    &lt;key macro=&quot;chinese-sort&quot; sort=&quot;ascending&quot;/&gt;       
+    &lt;key macro=&quot;author&quot;/&gt;       
+    &lt;key macro=&quot;issued-sort&quot; sort=&quot;ascending&quot;/&gt;       
+    &lt;key macro=&quot;title&quot;/&gt;       
+  &lt;/sort&gt;       
+  
+  &lt;!-- 中文的格式 --&gt;       
+  &lt;layout locale=&quot;zh-tw&quot;&gt;       
+    &lt;text macro=&quot;chinese-bibliography&quot;/&gt;       
+  &lt;/layout&gt;       
+  &lt;layout locale=&quot;zh-cn&quot;&gt;       
+    &lt;text macro=&quot;chinese-bibliography&quot;/&gt;       
+  &lt;/layout&gt;       
+  &lt;layout locale=&quot;zh-Hant&quot;&gt;       
+    &lt;text macro=&quot;chinese-bibliography&quot;/&gt;       
+  &lt;/layout&gt;       
+  &lt;layout locale=&quot;Chinese&quot;&gt;       
+    &lt;text macro=&quot;chinese-bibliography&quot;/&gt;       
+  &lt;/layout&gt;       
+  &lt;layout locale=&quot;chi&quot;&gt;       
+    &lt;text macro=&quot;chinese-bibliography&quot;/&gt;       
+  &lt;/layout&gt;       
+      
+  &lt;!-- 英文的格式 --&gt;
+
+    
+  &lt;layout&gt;      
+     
+    &lt;group suffix=&quot;.&quot;&gt;       
+      &lt;group delimiter=&quot;. &quot;&gt;       
+        &lt;text macro=&quot;author&quot;/&gt;       
+        &lt;text macro=&quot;issued&quot;/&gt;       
+        &lt;text macro=&quot;title&quot; prefix=&quot; &quot;/&gt;       
+        &lt;text macro=&quot;container&quot;/&gt;       
+      &lt;/group&gt;       
+      &lt;text macro=&quot;locators&quot;/&gt;       
+      &lt;group delimiter=&quot;, &quot; prefix=&quot;. &quot;&gt;       
+        &lt;text macro=&quot;event&quot;/&gt;       
+        &lt;text macro=&quot;publisher&quot;/&gt;       
+      &lt;/group&gt;       
+    &lt;/group&gt;       
+    &lt;text macro=&quot;access&quot; prefix=&quot; &quot;/&gt;       
+  &lt;/layout&gt;       
+&lt;/bibliography&gt;
+
+</code></pre><hr>
+<h2 id="csl-style-structure-1">CSL Style Structure</h2>
+<p>All CSL styles share the same basic structure: only five different XML elements can be nested directly in the style root element: info, citation, bibliography, macro and terms.</p>
+<ul>
+<li>info: contains metadata describing the style (name of the style, authors of the style, etc)</li>
+<li>citation: describes how in-text citations should be formatted</li>
+<li>bibliography: describes how bibliographies should be formatted</li>
+<li>macro: allows for reuse of formatting instructions, allowing for more compact styles</li>
+<li>terms: allows for the modification of locale-specific strings (e.g. “edited by” can be changed in “ed. by”)</li>
+</ul>
+<h3 id="info-1">info</h3>
+<h3 id="citation-1">citation</h3>
+<p>The cs:citation element describes the formatting of citations, which consist of one or more references (“cites”) to bibliographic sources. Citations appear in the form of either in-text citations (in the author (e.g. “[Doe]”), author-date (“[Doe 1999]”), label (“[doe99]”) or number (“[1]”) format) or notes. The required cs:layout child element describes what, and how, bibliographic data should be included in the citations (see Layout). cs:layout may be preceded by a cs:sort element, which can be used to specify how cites within a citation should be sorted (see Sorting). The cs:citation element may carry attributes for Citation-specific Options and Inheritable Name Options. An example of a cs:citation element:</p>
+<pre><code>&lt;citation&gt;
+  &lt;sort&gt;
+    &lt;key variable=&quot;citation-number&quot;/&gt;
+  &lt;/sort&gt;
+  &lt;layout&gt;
+    &lt;text variable=&quot;citation-number&quot;/&gt;
+  &lt;/layout&gt;
+&lt;/citation&gt;
+</code></pre><h3 id="bibliography-1">bibliography</h3>
+<p>The cs:bibliography element describes the formatting of bibliographies, which list one or more bibliographic sources. The required cs:layout child element describes how each bibliographic entry should be formatted. cs:layout may be preceded by a cs:sort element, which can be used to specify how references within the bibliography should be sorted (see Sorting). The cs:bibliography element may carry attributes for Bibliography-specific Options and Inheritable Name Options. An example of a cs:bibliography element:</p>
+<pre><code>&lt;bibliography&gt;
+  &lt;sort&gt;
+    &lt;key macro=&quot;author&quot;/&gt;
+  &lt;/sort&gt;
+  &lt;layout&gt;
+    &lt;group delimiter=&quot;. &quot;&gt;
+      &lt;text macro=&quot;author&quot;/&gt;
+      &lt;text variable=&quot;title&quot;/&gt;
+    &lt;/group&gt;
+  &lt;/layout&gt;
+&lt;/bibliography&gt;
+</code></pre><h3 id="locale">Locale</h3>
+<p>Localization data, by default drawn from the “locales-xx-XX.xml” locale files, may be redefined or supplemented with cs:locale elements, which should be placed directly after the cs:info element.</p>
+<p>The value of the optional xml:lang attribute on cs:locale, which must be set to an xsd:language locale code, determines which languages or language dialects are affected (see Locale Fallback).</p>
+<p>See Terms, Localized Date Formats and Localized Options for further details on the use of cs:locale.</p>
+<pre><code>&lt;style&gt;
+  &lt;locale xml:lang=&quot;en&quot;&gt;
+    &lt;terms&gt;
+      &lt;term name=&quot;editortranslator&quot; form=&quot;short&quot;&gt;
+        &lt;single&gt;ed. &amp;amp; trans.&lt;/single&gt;
+        &lt;multiple&gt;eds. &amp;amp; trans.&lt;/multiple&gt;
+      &lt;/term&gt;
+    &lt;/terms&gt;
+  &lt;/locale&gt;
+&lt;/style&gt;
+</code></pre><h3 id="macros">Macros</h3>
+<p>A list of macro definitions is usually included between the info and citation sections. These are sort of like subroutines that can be called later in the description to make similar styles for parts. Effective use of macros is a key to making good styles. Ideally, in fact, the main layout sections for the citation and bibliography should be quite simple, and simply call a series of macro</p>
+<h3 id="what-do-these-elements-do">What do these elements do?</h3>
+<p>The required cs:info element fulfills the same function in independent styles as it does in dependent styles: it stores the style metadata.
+The optional cs:locale elements can be used to overwrite the locale data from the locale files.
+The optional cs:macro elements can be used to store CSL code for use by cs:citation, cs:bibliography, or other cs:macro elements.
+The required cs:citation element defines the format of citations.
+The optional cs:bibliography element defines the format of the bibliography.</p>
+<p>How were we able to define this format? First, the structure of cs:bibliography is very similar to that of cs:citation, but here cs:layout defines the format of each individual bibliographic entry. In addition to the “author” and “issued-year” macro, the bibliographic entries also show each item’s “title” and “container-title” (for journal articles, the “container-title” is the title of the journal), the “volume” and “issue” in which the article was printed, and the pages (“page”) on which the article appeared.</p>
+<h1 id="参考资料">参考资料</h1>
+<p><a href="http://docs.citationstyles.org/en/stable/specification.html">http://docs.citationstyles.org/en/stable/specification.html</a><br>
+<a href="http://blog.sina.com.cn/s/blog_565e747c0101537z.html">http://blog.sina.com.cn/s/blog_565e747c0101537z.html</a><br>
+<a href="http://blog.pulipuli.info/2014/08/zoteroapa-zotero-citation-style-apa.html">http://blog.pulipuli.info/2014/08/zoteroapa-zotero-citation-style-apa.html</a></p>
+
+
+

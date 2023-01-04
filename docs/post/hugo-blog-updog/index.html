@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>使用 Hugo搭建 Blog - 袁博 | 敢于求知</title>
+    <meta property="og:title" content="使用 Hugo搭建 Blog - 袁博 | 敢于求知">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="前些天看了[谢益辉] (http://yihui.name/cn/)的博客，又被诱惑了。折腾了几天，终于把 Blog 的系统从 jekyll 换成了 Hugo。得益于他的blog 及其开发的 r 工具包 blogdown，换下来实在是很方便，总结下这个过程碰到的一些小坑。
+[&amp;hellip;] Hugo是一个用Go语言编写的静态网站生成器，它使用起来非常简单，相对于Jekyll复杂的安装设置来 &amp;hellip;">
+      <meta property="og:description" content="前些天看了[谢益辉] (http://yihui.name/cn/)的博客，又被诱惑了。折腾了几天，终于把 Blog 的系统从 jekyll 换成了 Hugo。得益于他的blog 及其开发的 r 工具包 blogdown，换下来实在是很方便，总结下这个过程碰到的一些小坑。
+[&amp;hellip;] Hugo是一个用Go语言编写的静态网站生成器，它使用起来非常简单，相对于Jekyll复杂的安装设置来 &amp;hellip;">
+      
+    
+
+    
+    
+    <meta name="twitter:image" content="https://yuanbo.updog.co/gif/see-idols.gif">
+    
+    
+
+    
+
+    
+    
+
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/fonts.css" />
+    
+<link rel="stylesheet" href="../../css/custom.css" />
+
+  </head>
+
+  
+  <body class="post">
+    <header class="masthead">
+      
+
+<h1><a href="../../"><img src="https://apps-db.oss-cn-shenzhen.aliyuncs.com/logos/shenweiyan.png" alt="Bo Yuan" /></a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" />
+  <label id="menu-label" for="menu-check" class="unselectable">
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="../../">首页</a></li>
+  
+  <li><a href="../../about/">关于</a></li>
+  
+  <li><a href="../../resume/">简历</a></li>
+  
+  <li><a href="../../post/">日志</a></li>
+  
+  <li><a href="../../resources/">资源</a></li>
+  
+  <li><a href="../../links/">链接</a></li>
+  
+  <li><a href="../../slides/">Slides</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+  
+
+
+
+<h1>使用 Hugo搭建 Blog</h1>
+
+
+
+
+
+
+<h3>yuanbo &middot 
+2017-04-12</h3> 
+
+
+   
+  
+
+
+
+      </header>
+
+
+  
+  
+  
+
+  
+  
+  
+
+  <p>前些天看了[谢益辉] (<a href="http://yihui.name/cn/">http://yihui.name/cn/</a>)的博客，又被诱惑了。折腾了几天，终于把 Blog 的系统从 jekyll 换成了 Hugo。得益于他的blog 及其开发的 r 工具包 <em>blogdown</em>，换下来实在是很方便，总结下这个过程碰到的一些小坑。</p>
+<h2 id="hugo搭建-blog">Hugo搭建 Blog</h2>
+<p>Hugo是一个用Go语言编写的静态网站生成器，它使用起来非常简单，相对于Jekyll复杂的安装设置来说，Hugo仅需要一个二进制文件hugo(hugo.exe)即可轻松用于本地调试和生成静态页面。Hugo生成静态页面的效率很高，几百篇博客文章生成几乎是瞬间完成的，而用Jekyll需要等待10秒左右。</p>
+<h3 id="hugo的介绍">Hugo的介绍</h3>
+<p>Hugo是什么？它主要做了什么？</p>
+<ol>
+<li>Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe）</li>
+<li>Hugo可以将你写好的MarkDown格式的文章自动转换为静态的网页。</li>
+<li>Hugo内置web服务器，可以方便的用于本地调试。</li>
+</ol>
+<p>[谢益辉] (<a href="http://yihui.name/cn/">http://yihui.name/cn/</a>)用 <code>blogdown::install_hugo()</code> 写了个封装，可以自动化下载安装 Hugo，而 <code>blogdown::new_site()</code> 直接把 Hugo 官方的 12 步快速入门步骤简化成了 1 步。</p>
+<p><a href="http://www.gohugo.org/post/">更多中文教程</a></p>
+<h3 id="中间碰到的几个小坑">中间碰到的几个小坑</h3>
+<h2 id="在-dropbox-文件夹里用-updog-做服务器">在 Dropbox 文件夹里，用 Updog 做服务器</h2>
+<p>看到[谢益辉] (<a href="http://yihui.name/cn/">http://yihui.name/cn/</a>)说用 Updog 做服务器，把网站文件放在 Dropbox 上更加方便。我自己去试了下，也被震惊了，在 Updog 主页上选择要建立的主页名称，然后回到 Dropbox 就会出现相应的文件，把自己博客的文件放到这个文件中，个人网站就已经部署好了，所以真得是非常简单。部署一个 blog 竟简单如此地步，实在让人太兴奋、太幸福啦。</p>
+<p><img src="https://yuanbo.updog.co/gif/see-idols.gif" alt="太兴奋"></p>
+<p><a href="http://blog.coderzh.com/2015/08/29/hugo/">http://blog.coderzh.com/2015/08/29/hugo/</a></p>
+<p><a href="https://yihui.name/cn/2017/02/old-tomb/">Updog 的介绍</a></p>
+
+
+
